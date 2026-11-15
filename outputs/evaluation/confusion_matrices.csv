@@ -1,0 +1,10 @@
+model,actual_label,predicted_Dropout,predicted_Enrolled,predicted_Graduate
+logistic_regression,Dropout,190,69,25
+logistic_regression,Enrolled,30,102,27
+logistic_regression,Graduate,16,74,352
+random_forest,Dropout,197,54,33
+random_forest,Enrolled,32,86,41
+random_forest,Graduate,9,48,385
+dummy_most_frequent,Dropout,0,0,284
+dummy_most_frequent,Enrolled,0,0,159
+dummy_most_frequent,Graduate,0,0,442

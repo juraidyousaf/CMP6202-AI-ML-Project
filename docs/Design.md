@@ -86,7 +86,10 @@ Every figure that may enter the report must have:
 Additional rules:
 
 - Sort bars by value or by a meaningful category order, and say which order was used if it matters.
-- Histograms and bar charts of the target must use the real class names or a clearly defined binning.
+- Histograms and bar charts of the target must use the class names Dropout, Enrolled, and Graduate once those labels are confirmed in the loaded file. Do not leave the chart in unexplained integer codes.
+- Integer category codes must not be drawn as a continuous histogram or scatter axis unless the caption says they are codes and the plot is only a diagnostic.
+- A confusion matrix for this project must label both axes with the three class names. Do not rely on red versus green to separate Dropout from Graduate.
+- No target-distribution chart, correlation heatmap, or model-comparison chart exists yet. Do not create placeholder image files.
 - Correlation heatmaps need a colour bar and feature names that remain readable. Drop or abbreviate names only with a key.
 - Save report figures into `figures/` using the names in section 8.
 - Do not add a title that states a conclusion the plotted data does not show.

@@ -5,9 +5,9 @@ Internal planning document for CMP6202. This describes the machine-learning work
 Student ID: s24156365  
 Repository name: CMP6202-AI-ML-Project
 
-No dataset, target, algorithm, or result is selected here. Model details stay **TBD — to be decided after dataset selection.**
+The dataset and task are selected. Planned models are named below and have not been trained. No result exists. Split ratio, `random_state`, and a third algorithm stay **TBD**.
 
-Folders in the tree below are the intended layout. Create a folder when a phase needs it. Do not add empty placeholder trees "for later" unless a file is about to go in them. As of the planning session, the repository work that exists is `docs/`.
+Folders in the tree below are the intended layout. Create a folder when a phase needs it. Do not add empty placeholder trees "for later" unless a file is about to go in them. The dataset file is not in the repository yet. `data/raw/` must be created when that file is actually added.
 
 ---
 
@@ -16,7 +16,7 @@ Folders in the tree below are the intended layout. Create a folder when a phase 
 - **Reproducibility** — a third party can recreate tables and figures from the README, the declared dependencies, and the saved data or its exact source.
 - **Separation of raw and processed data** — `data/raw/` is the untouched source. Cleaning and transforms write to `data/interim/` or `data/processed/`.
 - **Separation of concerns** — exploratory analysis, preprocessing, training, and evaluation stay in distinct notebooks or modules so a change in one step is visible.
-- **Configuration where useful** — paths, split ratio, seed, and target column name live in one obvious place once they are known. They are not copied as slightly different literals across notebooks.
+- **Configuration where useful** — paths, split ratio, seed, and the target column name `Target` live in one obvious place once the ratio and seed are chosen. They are not copied as slightly different literals across notebooks.
 - **No hidden manual steps** — a click, a spreadsheet edit, or an undocumented filter must not be required to obtain the reported result. If a manual step is unavoidable, the README states it.
 - **Outputs generated from code** — figures and metric tables that appear in the report are written by the notebooks or scripts.
 
@@ -58,7 +58,7 @@ Figures / Tables
 Report + Reflection
 ```
 
-**Leakage warning.** Split and preprocessing decisions must avoid data leakage. Fit transformers, feature-selection rules, and resampling on training data only. Choose hyperparameters with cross-validation on the training portion. Leave the test set unseen until the final evaluation of already chosen models.
+**Leakage warning.** Split and preprocessing decisions must avoid data leakage. Fit transformers, feature-selection rules, and resampling on training data only. Choose hyperparameters with cross-validation on the training portion. Leave the test set unseen until the final evaluation of already chosen models. Do not use `Target` as an input. Use only information available by the end of the second semester. Which columns fail that rule is a Phase 2 check, not a finding recorded here.
 
 How this lines up with the phase plan in `docs/Phases.md`:
 
@@ -197,21 +197,23 @@ Required practices:
 - Fit imputers, scalers, encoders, feature selectors, and resampling on training data only. Apply those fitted objects to the test data.
 - The test set remains unseen until final evaluation. It is not a pool for trying ideas.
 - Use scikit-learn `Pipeline` and `ColumnTransformer` where they make the fit/transform boundary explicit. A manual split is acceptable only if the same boundary is obvious in the code.
-- Set `random_state` on the splitter and on estimators that use it. Record the seed next to the split description.
+- Set `random_state` on the splitter and on estimators that use it. Record the seed next to the split description. The seed and the test fraction are still **TBD** for Phase 5.
+- Use a stratified split on `Target`. UCI says the creators used 80% train and 20% test. That ratio is not adopted until Phase 5 records it.
+- Treat integer feature codes as categorical unless a recorded reason says a particular integer column is continuous or ordinal. UCI's own variable table marks many integer columns as coded categories.
+- UCI reports no missing values. Still inspect the loaded file before imputing. Do not skip that inspection because the repository page says none.
 - If rows are removed, record how many, why, and whether the removal rule was chosen using training data only.
+- The other seven shortlisted datasets stay unused. Their names are not stored in this file. Do not load one of them as a second project dataset.
 
 ## 7. Model Architecture
 
-**TBD — to be decided after dataset selection.**
+The task is multiclass classification. The planned pair matches the original pattern and the approved research question. Nothing in this section has been fit.
 
-No algorithm is chosen in this document. The planned pattern, to be filled after EDA, is:
-
-1. **Simple interpretable baseline** — a model whose predictions can be explained in coursework terms (for example a linear or logistic model, or a shallow decision tree). The exact class depends on classification versus regression.
-2. **Second algorithm from a different model family** — so the comparison is informative, not two near-duplicates of the same method.
-3. **Optional third algorithm** — only if it answers a gap the first two leave open, and the extra complexity is explained.
+1. **Planned baseline** — multinomial Logistic Regression, as the interpretable linear classifier. It has not been trained.
+2. **Planned second algorithm** — Random Forest, from a different model family. It has not been trained.
+3. **Optional third algorithm** — **TBD**. Add one only if EDA shows a gap the first two leave open.
 4. **Tune only after baseline evaluation** — record untuned results first. Then search a small, stated hyperparameter space with cross-validation on the training data.
 
-The preferred model is the one the evidence supports for the stated audience and metrics. It is not automatically the most complex model.
+EDA can still challenge this pair before Phase 6. Do not treat the research question's wording as permission to skip that review. The preferred model, once results exist, is the one the evidence supports for the stated audience and metrics. It is not automatically Random Forest. No preferred model exists yet.
 
 ## 8. Reproducibility Architecture
 
@@ -222,7 +224,7 @@ The repository is reproducible when all of the following are true:
 - Random seeds are fixed where they affect results, and the seed value is written down.
 - Code uses paths relative to the repository root. There are no absolute Windows or personal home-directory paths.
 - There is a single documented execution order (the numbered notebooks, or a script that replaces them).
-- The dataset source URL and licence are in the README and in the data dictionary.
+- The dataset source URL and licence are in the README and in the data dictionary. The approved source is https://archive.ics.uci.edu/dataset/697/predict, DOI https://doi.org/10.24432/C5MC89, licence CC BY 4.0. The README and data dictionary do not exist yet.
 - Environment setup commands in the README match what a clean machine must run.
 - Saved outputs can be regenerated by that order. Hand-edited metric files are not evidence.
 

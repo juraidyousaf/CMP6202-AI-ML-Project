@@ -1,0 +1,43 @@
+# Python virtual environment
+.venv/
+venv/
+
+# Bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Packaging and generated temporary files
+build/
+dist/
+*.egg-info/
+.eggs/
+*.tmp
+*.temp
+*.log
+
+# Local environment secrets
+.env
+.env.*
+!.env.example
+*.pem
+credentials.json
+secrets.json
+
+# OS files
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# data/raw/ is intentionally not ignored.
+# The approved UCI dataset will live in data/raw/ and must stay available to the
+# project. Do not add a blanket rule for *.csv, *.data, or data/raw/ unless a
+# later decision documents why the raw file should stay out of Git.

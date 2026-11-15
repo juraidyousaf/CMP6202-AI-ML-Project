@@ -1,0 +1,9 @@
+# Direct dependencies installed into .venv on 2026-11-14 with Python 3.13.7.
+# scipy and joblib are installed because scikit-learn requires them. They are not listed separately.
+# ucimlrepo is intentionally absent.
+numpy==2.5.4
+pandas==3.1.1
+matplotlib==3.11.2
+seaborn==0.13.2
+scikit-learn==1.9.1
+jupyter==1.1.1

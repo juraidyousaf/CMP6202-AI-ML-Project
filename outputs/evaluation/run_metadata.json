@@ -1,0 +1,108 @@
+{
+  "evaluation_timestamp": "2026-11-15T19:45:33+05:00",
+  "raw_csv": "data/raw/data.csv",
+  "raw_sha256_before": "3ef126de5cefff26eb11fbb4237f1a1401cb64b488e2f1d598c23cedeb4c45ae",
+  "raw_sha256_after": "3ef126de5cefff26eb11fbb4237f1a1401cb64b488e2f1d598c23cedeb4c45ae",
+  "train_rows": 3539,
+  "test_rows": 885,
+  "train_class_counts": {
+    "Dropout": 1137,
+    "Enrolled": 635,
+    "Graduate": 1767
+  },
+  "test_class_counts": {
+    "Dropout": 284,
+    "Enrolled": 159,
+    "Graduate": 442
+  },
+  "test_size": 0.2,
+  "random_state": 42,
+  "cv_splits": 5,
+  "cv_shuffle": true,
+  "scoring": "f1_macro",
+  "search_n_jobs": 1,
+  "forest_n_jobs": 1,
+  "refit": true,
+  "error_score": "raise",
+  "logistic_grid_size": 8,
+  "forest_grid_size": 36,
+  "logistic_cv_fits_completed": 40,
+  "forest_cv_fits_completed": 180,
+  "training_refits_completed": 2,
+  "dummy_training_fits": 1,
+  "test_rows_used_for_tuning": 0,
+  "logistic_scaler_rows_seen": 3539,
+  "forest_numeric_is_scaler": false,
+  "timing_assumption": "Displaced, Educational special needs, Scholarship holder, and International are retained although their individual UCI descriptions do not state a measurement date. Availability after the second semester is an unverified modelling assumption, not a confirmed date.",
+  "warnings": [],
+  "sklearn_version": "1.9.1",
+  "phase_5_marked_complete": false,
+  "output_files": [
+    "outputs/models/logistic_regression.joblib",
+    "outputs/models/random_forest.joblib",
+    "outputs/models/dummy_most_frequent.joblib",
+    "outputs/evaluation/logistic_regression_cv_results.csv",
+    "outputs/evaluation/random_forest_cv_results.csv",
+    "outputs/evaluation/selected_parameters.json",
+    "outputs/evaluation/test_metrics.json",
+    "outputs/evaluation/test_metrics.csv",
+    "outputs/evaluation/per_class_metrics.csv",
+    "outputs/evaluation/confusion_matrices.csv",
+    "outputs/evaluation/predictions.csv",
+    "outputs/evaluation/run_metadata.json",
+    "outputs/evaluation/phase5_evaluation_report.md"
+  ],
+  "selected": {
+    "logistic_regression": {
+      "model": "logistic_regression",
+      "declared_index": 3,
+      "declared_order": 4,
+      "parameters": {
+        "classifier__C": 0.1,
+        "classifier__class_weight": "balanced"
+      },
+      "mean_cv_macro_f1": 0.6881125650673585,
+      "std_cv_macro_f1": 0.01991414406836082,
+      "fold_macro_f1": [
+        0.7120742318841323,
+        0.7107293005075087,
+        0.6832886203290932,
+        0.6682840657995457,
+        0.6661866068165126
+      ],
+      "tied_declared_indices": [
+        3
+      ],
+      "cv_fits_completed": 40,
+      "training_refit_completed": true,
+      "scoring": "f1_macro"
+    },
+    "random_forest": {
+      "model": "random_forest",
+      "declared_index": 13,
+      "declared_order": 14,
+      "parameters": {
+        "classifier__class_weight": "balanced",
+        "classifier__max_depth": 20,
+        "classifier__min_samples_leaf": 1,
+        "classifier__n_estimators": 200
+      },
+      "mean_cv_macro_f1": 0.6998064617503175,
+      "std_cv_macro_f1": 0.012204693927217965,
+      "fold_macro_f1": [
+        0.7012925067243464,
+        0.7078256956825489,
+        0.7146554386714645,
+        0.6786516024220942,
+        0.696607065251133
+      ],
+      "tied_declared_indices": [
+        13
+      ],
+      "cv_fits_completed": 180,
+      "training_refit_completed": true,
+      "scoring": "f1_macro"
+    }
+  },
+  "test_metric_file": "outputs/evaluation/test_metrics.json"
+}

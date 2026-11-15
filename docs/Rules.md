@@ -6,7 +6,7 @@ Module: CMP6202 Artificial Intelligence and Machine Learning
 Student ID: s24156365  
 Repository: CMP6202-AI-ML-Project
 
-These rules override a request to "just pick something" when the something is a dataset, a target, a metric, a citation, or a result. If a decision is open, write **TBD — to be decided after dataset selection.** Do not invent a value to keep working.
+These rules override a request to "just pick something" when the something is a metric threshold, a class count, a citation, or a result. The dataset decision is closed: UCI dataset 697, `Target`, multiclass classification. If another decision is open, write **TBD**. Do not invent a value to keep working.
 
 Related documents: `docs/PRD.md`, `docs/Architecture.md`, `docs/Phases.md`, `docs/Design.md`, `docs/Memory.md`.
 
@@ -16,7 +16,7 @@ Related documents: `docs/PRD.md`, `docs/Architecture.md`, `docs/Phases.md`, `doc
 
 - Do not invent data, statistics, licences, certificates, citations, or model results.
 - Do not silently alter raw data. Transformations are written to a new file or a new in-memory object, with the change explained.
-- Do not select algorithms before the dataset has been loaded and explored.
+- Logistic Regression and Random Forest are the planned pair named in the approved research question. Do not train them, and do not treat the pair as locked, until the dataset has been loaded and explored. Do not add another algorithm before that review.
 - Do not optimise prematurely. A baseline comes before hyperparameter search.
 - Every important modelling decision must be explainable in a sentence a marker can check: what was done, why, and what evidence supported it.
 - Prefer simple, reproducible solutions. Add complexity only when the data or the coursework requirement shows it is needed.
@@ -74,24 +74,31 @@ If a justified library is added, update `requirements.txt`, the README, `docs/Me
 - Do not remove rows only because removal improves a metric.
 - Preserve meaningful class distributions. If rows are filtered, show the target balance before and after.
 - Document every transformation that changes values, rows, columns, or units.
-- Confirm the dataset has at least 3,000 rows before committing to it. About 3,000–5,000 rows is the recommended band. A larger open dataset is allowed only with a documented reason and a documented sampling method if a sample is used.
-- If the licence cannot be verified from a public source, do not select that dataset.
+- The approved dataset is UCI 697. UCI reports 4,424 instances, 36 features, and no missing values. Those figures are source metadata. Measure them again from the loaded file before treating them as project statistics.
+- Identify categorical variables that are stored as integer codes. Do not automatically treat every integer column as a continuous number. Decide continuous, ordinal, or categorical only after the data dictionary is checked.
+- Do not use `Target` as an input feature.
+- Use only fields available by the end of the second semester. Confirm that boundary against the loaded columns before modelling.
+- Keep the other seven shortlisted datasets as alternatives only. Their names are not in this repository yet. Do not swap in an alternative without a new decision.
+- The approved licence is CC BY 4.0. Do not replace it with a guessed licence. If a later download page disagrees, stop and record the disagreement.
 
 ## 5. ML Rules
 
 - Establish a baseline before tuning.
 - Train a minimum of two different algorithms.
-- Use the same test split for every model in the comparison.
-- Choose metrics according to the task and the data, after the task type is known.
-- For classification, consider accuracy, precision, recall, F1, a confusion matrix, and ROC-AUC where each one is appropriate. State which class is the positive class.
-- For regression, consider MAE, MSE, RMSE, R², and MAPE where each one is appropriate. State the units.
-- Do not use accuracy alone for imbalanced classification.
+- Use the same stratified test split for every model in the comparison. Stratify on `Target`.
+- The approved task is multiclass classification. The planned metrics are macro F1-score, precision, recall, balanced accuracy, accuracy, and a confusion matrix. No scores exist yet.
+- There is no single positive class. Dropout, Enrolled, and Graduate are the three classes. Report precision, recall, and F1 in a way that does not hide a weak class. Macro averages are the planned summary.
+- ROC-AUC is not part of the approved metric list. Do not add it unless a later written reason explains why a multiclass AUC is needed.
+- Regression metrics do not apply to this target. Do not report MAE, MSE, RMSE, R², or MAPE for `Target`.
+- Do not use accuracy alone. UCI states that the classes are strongly imbalanced. Class counts are not recorded until they are counted in the loaded file.
+- Account for that imbalance in the split and in the metrics. Do not add imbalanced-learn until a measured imbalance shows that the planned metrics and stratified split are not enough, and the report explains that choice.
 - Use cross-validation where it estimates generalisation or guides tuning. Run it on the training portion.
 - Start hyperparameter tuning after the baseline exists.
 - Test data must not be used to choose hyperparameters, features, or preprocessing settings.
-- Compare models on more than a single headline number when the task needs it (for example precision and recall together, or error in the units of the target).
+- Compare models on more than a single headline number. For this task, that means the planned metric set together, not accuracy by itself.
 - Save the comparison table from code into `outputs/tables/` or `outputs/metrics/`.
 - Do not claim a model is "best" without saying best by which metric, on which split.
+- The report must document the single-institution limitation and fairness considerations for demographic fields. Do not write those conclusions before the data dictionary and the model outputs exist.
 
 ## 6. Coding Standards
 

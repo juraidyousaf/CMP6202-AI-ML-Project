@@ -1,0 +1,158 @@
+{
+  "logistic_regression": {
+    "macro_f1": 0.6892903420183808,
+    "balanced_accuracy": 0.7023012029890147,
+    "macro_precision": 0.697566135029276,
+    "accuracy": 0.727683615819209,
+    "confusion_matrix": [
+      [
+        190,
+        69,
+        25
+      ],
+      [
+        30,
+        102,
+        27
+      ],
+      [
+        16,
+        74,
+        352
+      ]
+    ],
+    "labels": [
+      "Dropout",
+      "Enrolled",
+      "Graduate"
+    ],
+    "per_class": [
+      {
+        "label": "Dropout",
+        "precision": 0.8050847457627118,
+        "recall": 0.6690140845070423,
+        "f1": 0.7307692307692307,
+        "support": 284
+      },
+      {
+        "label": "Enrolled",
+        "precision": 0.4163265306122449,
+        "recall": 0.6415094339622641,
+        "f1": 0.504950495049505,
+        "support": 159
+      },
+      {
+        "label": "Graduate",
+        "precision": 0.8712871287128713,
+        "recall": 0.7963800904977375,
+        "f1": 0.8321513002364066,
+        "support": 442
+      }
+    ],
+    "macro_recall_equals_balanced_accuracy": true
+  },
+  "random_forest": {
+    "macro_f1": 0.7016908329335929,
+    "balanced_accuracy": 0.7018610663191801,
+    "macro_precision": 0.7079859524582094,
+    "accuracy": 0.7548022598870057,
+    "confusion_matrix": [
+      [
+        197,
+        54,
+        33
+      ],
+      [
+        32,
+        86,
+        41
+      ],
+      [
+        9,
+        48,
+        385
+      ]
+    ],
+    "labels": [
+      "Dropout",
+      "Enrolled",
+      "Graduate"
+    ],
+    "per_class": [
+      {
+        "label": "Dropout",
+        "precision": 0.8277310924369747,
+        "recall": 0.6936619718309859,
+        "f1": 0.7547892720306514,
+        "support": 284
+      },
+      {
+        "label": "Enrolled",
+        "precision": 0.4574468085106383,
+        "recall": 0.5408805031446541,
+        "f1": 0.4956772334293948,
+        "support": 159
+      },
+      {
+        "label": "Graduate",
+        "precision": 0.8387799564270153,
+        "recall": 0.8710407239819005,
+        "f1": 0.8546059933407325,
+        "support": 442
+      }
+    ],
+    "macro_recall_equals_balanced_accuracy": true
+  },
+  "dummy_most_frequent": {
+    "macro_f1": 0.22205476011052497,
+    "balanced_accuracy": 0.3333333333333333,
+    "macro_precision": 0.1664783427495292,
+    "accuracy": 0.4994350282485876,
+    "confusion_matrix": [
+      [
+        0,
+        0,
+        284
+      ],
+      [
+        0,
+        0,
+        159
+      ],
+      [
+        0,
+        0,
+        442
+      ]
+    ],
+    "labels": [
+      "Dropout",
+      "Enrolled",
+      "Graduate"
+    ],
+    "per_class": [
+      {
+        "label": "Dropout",
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 284
+      },
+      {
+        "label": "Enrolled",
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 159
+      },
+      {
+        "label": "Graduate",
+        "precision": 0.4994350282485876,
+        "recall": 1.0,
+        "f1": 0.6661642803315749,
+        "support": 442
+      }
+    ],
+    "macro_recall_equals_balanced_accuracy": true
+  }
+}
