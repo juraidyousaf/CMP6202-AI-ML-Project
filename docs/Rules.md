@@ -16,8 +16,8 @@ Related documents: `docs/PRD.md`, `docs/Architecture.md`, `docs/Phases.md`, `doc
 
 - Do not invent data, statistics, licences, certificates, citations, or model results.
 - Do not silently alter raw data. Transformations are written to a new file or a new in-memory object, with the change explained.
-- Logistic Regression and Random Forest are the planned pair named in the approved research question. Do not train them, and do not treat the pair as locked, until the dataset has been loaded and explored. Do not add another algorithm before that review.
-- Do not optimise prematurely. A baseline comes before hyperparameter search.
+- Logistic Regression, Random Forest, and the most-frequent dummy are the approved comparison. They were fitted under the frozen Phase 5 design. Do not train another algorithm, and do not change that experiment.
+- Do not optimise prematurely. The approved search is the one already completed. Do not start a new search.
 - Every important modelling decision must be explainable in a sentence a marker can check: what was done, why, and what evidence supported it.
 - Prefer simple, reproducible solutions. Add complexity only when the data or the coursework requirement shows it is needed.
 - Do not present this planning set as the final report.
@@ -83,21 +83,21 @@ If a justified library is added, update `requirements.txt`, the README, `docs/Me
 
 ## 5. ML Rules
 
-- Establish a baseline before tuning.
-- Train a minimum of two different algorithms.
-- Use the same stratified test split for every model in the comparison. Stratify on `Target`.
-- The approved task is multiclass classification. The planned metrics are macro F1-score, precision, recall, balanced accuracy, accuracy, and a confusion matrix. No scores exist yet.
-- There is no single positive class. Dropout, Enrolled, and Graduate are the three classes. Report precision, recall, and F1 in a way that does not hide a weak class. Macro averages are the planned summary.
+- The approved baseline is `DummyClassifier(strategy="most_frequent")`. It was fitted once on the training portion and was not tuned. The frozen design did not save a separate untuned Logistic Regression or Random Forest. An earlier instruction to save those untuned models before tuning is historical and is not current work.
+- The two competitive classifiers are Logistic Regression and Random Forest. Both were tuned with `GridSearchCV`, `scoring="f1_macro"`, and five-fold `StratifiedKFold` on the training data only. The logistic grid has 8 configurations. The forest grid has 36. The completed search is 220 cross-validation fits plus two training-set refits. The dummy fit is not part of the 220.
+- Use the same stratified test split for every model in the comparison. The approved split is 80/20 on `Target`, with `random_state=42`. The untouched test set has 885 rows and was evaluated once after tuning.
+- The approved task is multiclass classification. The approved metrics are macro F1-score, balanced accuracy, macro precision, accuracy, a confusion matrix, and per-class precision, recall, and F1. Macro F1 is the primary metric. Balanced accuracy is the recall summary. The saved values are in `outputs/evaluation/`. Do not copy or recalculate them in this rulebook.
+- There is no single positive class. Dropout, Enrolled, and Graduate are the three classes. Report precision, recall, and F1 in a way that does not hide a weak class. Macro F1 is the approved summary. No single overall winner is approved.
 - ROC-AUC is not part of the approved metric list. Do not add it unless a later written reason explains why a multiclass AUC is needed.
 - Regression metrics do not apply to this target. Do not report MAE, MSE, RMSE, R², or MAPE for `Target`.
-- Do not use accuracy alone. UCI states that the classes are strongly imbalanced. Class counts are not recorded until they are counted in the loaded file.
-- Account for that imbalance in the split and in the metrics. Do not add imbalanced-learn until a measured imbalance shows that the planned metrics and stratified split are not enough, and the report explains that choice.
-- Use cross-validation where it estimates generalisation or guides tuning. Run it on the training portion.
-- Start hyperparameter tuning after the baseline exists.
-- Test data must not be used to choose hyperparameters, features, or preprocessing settings.
-- Compare models on more than a single headline number. For this task, that means the planned metric set together, not accuracy by itself.
-- Save the comparison table from code into `outputs/tables/` or `outputs/metrics/`.
-- Do not claim a model is "best" without saying best by which metric, on which split.
+- Do not use accuracy alone. The counted class shares are in `outputs/dataset_audit.md` and `outputs/eda_report.md`. Graduate is the largest class.
+- Account for that imbalance in the split and in the metrics. Do not add resampling or imbalanced-learn. The frozen experiment did not use them.
+- The completed cross-validation ran on the training portion. Do not run a new search.
+- The historical instruction to start tuning only after a separate untuned Logistic Regression or Random Forest evaluation is not the approved workflow. The dummy baseline and the two training-only searches are the frozen workflow.
+- Test data must not be used to choose hyperparameters, features, or preprocessing settings. The 885-row holdout was used once and must stay unused for any new choice.
+- Compare the two tuned models and the dummy on the approved metric set, not on accuracy by itself.
+- The comparison produced by the approved run is stored under `outputs/evaluation/`. Do not treat `outputs/tables/` or `outputs/metrics/` as the approved destination. Those folders are not part of this repository.
+- Do not designate a single overall winner. Naming one metric, including test macro F1, does not authorise that conclusion.
 - The report must document the single-institution limitation and fairness considerations for demographic fields. Do not write those conclusions before the data dictionary and the model outputs exist.
 
 ## 6. Coding Standards

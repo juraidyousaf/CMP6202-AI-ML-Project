@@ -34,19 +34,19 @@ The dataset decision is closed. If a later value is unknown, write **TBD**. Do n
 
 ## 2. Current Status
 
-Dataset selected: Predict Students' Dropout and Academic Success, UCI dataset 697. Phase 3 EDA was reviewed and approved on 2026-11-15. Target counts remain Graduate 2,209 (49.9322%), Dropout 1,421, and Enrolled 794. RQ1 is the only approved research question. RQ2 and RQ3 are proposed and not approved. Phase 4 preprocessing was reviewed and approved as complete on 2026-11-15. The methodology stays frozen in `docs/phase-4-preprocessing-plan.md`, and the path is `src/preprocessing.py`. Phase 5 — Model Development and Evaluation is complete and approved on 2026-11-15. The experimental design was formally approved and frozen on 2026-11-15 and was not changed. The implementation and independent test evaluation were completed on 2026-11-15: 27 tests passed, 220 cross-validation fits, two training-set refits, and one Dummy baseline fit. The student approved the measured results and the generated artefacts in `outputs/models/` and `outputs/evaluation/`. No later phase has been started.
+Dataset selected: Predict Students' Dropout and Academic Success, UCI dataset 697. Phase 3 EDA was reviewed and approved on 2026-11-15. Target counts remain Graduate 2,209 (49.9322%), Dropout 1,421, and Enrolled 794. RQ1 is the only approved predictive research question. Two descriptive EDA questions were approved on 2026-11-16. The earlier proposed RQ2 and RQ3 remain unapproved. Phase 4 preprocessing was reviewed and approved as complete on 2026-11-15. The methodology stays frozen in `docs/phase-4-preprocessing-plan.md`, and the path is `src/preprocessing.py`. Phase 5 — Model Development and Evaluation is complete and approved on 2026-11-15. The experimental design was formally approved and frozen on 2026-11-15 and was not changed. The implementation and independent test evaluation were completed on 2026-11-15: 27 tests passed, 220 cross-validation fits, two training-set refits, and one Dummy baseline fit. The student approved the measured results and the generated artefacts in `outputs/models/` and `outputs/evaluation/`. The revised Phase 6 scope, Results Interpretation and Coursework Report Preparation, was approved on 2026-11-15. Documentation synchronization of `docs/Phases.md`, `docs/Memory.md`, `docs/PRD.md`, and `README.md` was authorized and applied. Phase 6 started on 2026-11-15. The student reviewed and approved the interpretation and evidence map in `docs/phase-6-results-interpretation.md` on 2026-11-16. The CMP6202 Assessment Brief 2026–27 and Individual Report Template 2026–27 were reviewed on 2026-11-16. On 2026-11-17 both files were inspected in the repository. They are `CMP6202 Assessment Brief  2026-27.docx` and `CMP6202 Individual Report Template 2026-27.docx` at the repository root. Phase 6 remains open. No report has been drafted. On 2026-11-17 the student approved the report title, the audience, the seen-data reporting rule, a later comparison figure from the saved results, and a preparation package of a Word report, a technical ZIP, and the GitHub link. The final Moodle instructions have not been verified. The verified comparison figure is `figures/model_comparison/figure_01_model_comparison_f1.png`, written by `src/plot_model_comparison.py` from saved evaluation files. Panel A is selected Logistic Regression and Random Forest five-fold training-only cross-validation macro F1. No dummy cross-validation score was saved. Panel B is holdout macro F1 for the dummy, Logistic Regression, and Random Forest. Panel C is holdout F1 for Dropout, Enrolled, and Graduate. Phases 9–12 have not started.
 
 ## 3. Current Phase
 
-Phase 4 — complete and approved on 2026-11-15. Phase 5 — Model Development and Evaluation is complete and approved on 2026-11-15. The experimental design remains frozen. No later phase has been started.
+Phase 4 — complete and approved on 2026-11-15. Phase 5 — Model Development and Evaluation is complete, approved, and frozen on 2026-11-15. Phase 6 started on 2026-11-15. Its interpretation and evidence map were approved on 2026-11-16. Phase 6 remains open because the report has not been drafted. Report-preparation decisions were recorded on 2026-11-17, and unresolved report requirements remain. Phases 9–12 have not started.
 
 ## 4. Current Task
 
-None. Phase 5 is complete and approved on 2026-11-15. Do not start Phase 6 or any later phase until the student asks. Do not change the frozen design or the measured results.
+Record that the official brief and template are stored at the repository root and have been inspected. The interpretation remains approved. Report drafting has not started. Do not mark Phase 6 complete. Do not change the frozen Phase 5 design or the measured results. The comparison figure already exists and was not changed in this synchronization.
 
 ## 5. Current File Being Worked On
 
-`docs/Phases.md`, `docs/Memory.md`, and the status lines of `docs/phase-5-experimental-design.md`. No source file, test, dataset, model, or evaluation output was edited.
+`docs/phase-6-results-interpretation.md`, `docs/Phases.md`, `docs/Memory.md`, and `docs/Design.md`. No source file, test, dataset, model, evaluation output, figure, or report outline was edited.
 
 ## 6. Completed
 
@@ -61,19 +61,21 @@ Items marked done from the student's own start-of-project notes are labelled as 
 - [x] Phase 0 setup files created on 2026-11-14: `README.md`, `.gitignore`, `requirements.txt`, `.venv/`, and the project folders. The student stated that Phase 0 is complete and approved.
 - [x] Phase 2 audit on 2026-11-14. Official zip preserved. `src/data_audit.py` exited 0 and wrote `outputs/dataset_audit.md`. `ucimlrepo` was not installed.
 - [x] EDA notebook executed on 2026-11-14. Seven figures saved. Report written.
-- [x] Phase 3 reviewed and approved on 2026-11-15. RQ1 remains the only approved research question. RQ2 and RQ3 were not approved.
+- [x] Phase 3 reviewed and approved on 2026-11-15. At that approval, RQ1 was the only approved research question. RQ2 and RQ3 were not approved.
 - [x] Phase 4 reviewed and approved as complete on 2026-11-15. The frozen methodology was not changed.
 - [x] Phase 5 — Model Development and Evaluation reviewed and approved as complete on 2026-11-15. The frozen experimental design was not changed. 27 tests passed. The run completed 220 cross-validation fits, two training-set refits, and one Dummy baseline fit. Both tuned models were evaluated independently on the untouched test set. The student approved the generated model and evaluation artefacts.
+- [x] Revised Phase 6 scope approved on 2026-11-15: Results Interpretation and Coursework Report Preparation. Documentation synchronization of the four planning files was authorized. Phase 6 implementation has not started.
 
 ## 7. In Progress
 
-- [ ] Approval decision for proposed RQ2 and RQ3
-- [ ] Remaining writing items: one explicit report audience and a provisional title
+- [ ] Phase 6 report preparation. The interpretation and evidence map are approved. The phase is not complete, and no report has been drafted.
+- [ ] The earlier proposed RQ2 and RQ3 remain unapproved. Do not treat them as approved predictive questions.
+- [x] Report title and audience, decided on 2026-11-17. The title is Predicting Student Academic Outcomes Using Logistic Regression and Random Forest. The audience is academic and technical readers familiar with introductory machine learning. The report text is not written.
 - [ ] Names of the seven alternative datasets, if they are to be stored in the repository
 
 ## 8. Next Actions
 
-1. Do not start Phase 6 or any later phase until the student asks. Keep the frozen Phase 5 design and the measured results unchanged.
+1. Wait for explicit approval before drafting the report. Keep Phase 6 open. Keep the frozen Phase 5 design and the measured results unchanged. Do not execute the superseded Phase 6–8 modelling checklists. Report five-fold training-only cross-validation as validation evidence and the 885-row holdout as unseen test evidence. Do not call the cross-validation results training-set performance, and do not calculate separate final-model training-set metrics. Do not add feature-impact analysis unless the student gives a separate approval. The verified comparison figure is `figures/model_comparison/figure_01_model_comparison_f1.png`. Do not regenerate it unless the student asks.
 2. Carry the approved modelling notes below into later writing. The full-data Graduate share of 49.9322% is still not a model score. The dummy test metrics are separate and are stored in `outputs/evaluation/test_metrics.json`.
 3. Keep `data/raw/data.csv` and the zip unchanged. The second-semester "without evaluations" wording stays unresolved.
 
@@ -86,8 +88,8 @@ Items marked done from the student's own start-of-project notes are labelled as 
 | 2026-10-17 | The final dataset had not been selected at that date. | Historical planning decision. Superseded on 2026-11-14. |
 | 2026-11-14 | Active dataset: Predict Students' Dropout and Academic Success, UCI ID 697, CC BY 4.0, DOI https://doi.org/10.24432/C5MC89. | Student-approved Phase 1 selection. UCI reports 4,424 instances and 36 features. |
 | 2026-11-14 | Task: multiclass classification. Target: `Target`. Classes: Dropout, Enrolled, Graduate. Prediction point: after the second semester. | Follows the approved research question and the UCI task definition. |
-| 2026-11-14 | Planned models: Logistic Regression, then Random Forest. Planned metrics: macro F1, precision, recall, balanced accuracy, accuracy, and a confusion matrix. | Named in the approved plan. Not trained. No scores exist. EDA can still challenge the pair. |
-| 2026-11-14 | The split must be stratified. Ratio and `random_state` are not chosen. UCI's 80/20 example is not adopted. | Prevents an unapproved split from being copied out of the UCI notes. |
+| 2026-11-14 | Planned models: Logistic Regression, then Random Forest. Planned metrics: macro F1, precision, recall, balanced accuracy, accuracy, and a confusion matrix. | Historical status on this date: not trained, and no scores existed. Superseded by the Phase 5 rows below. |
+| 2026-11-14 | The split must be stratified. Ratio and `random_state` are not chosen. UCI's 80/20 example is not adopted. | Historical status on this date. Superseded on 2026-11-15 by the frozen 80/20 stratified split with `random_state=42`. |
 | 2026-11-14 | Seven other shortlisted datasets remain alternatives only. | Their names were not included in this update, so they are not written here. |
 | 2026-10-17 | The final report will not be generated until the ML work is sufficiently complete. | The report must be built from real outputs. These markdown files are planning documents only. |
 | 2026-10-17 | The default modelling stack is Python with pandas, numpy, scikit-learn, and matplotlib. | Conservative coursework stack. Other libraries need a written justification. See `docs/Rules.md`. |
@@ -98,42 +100,55 @@ Items marked done from the student's own start-of-project notes are labelled as 
 | 2026-11-14 | RQ2 and RQ3 are proposed only. They are not approved. | The student labelled them pending approval. |
 | 2026-11-14 | EDA used the original file in memory. Seven figures were saved. The planned model pair was not trained. | `jupyter nbconvert --execute` finished with exit code 0. Raw SHA-256 was unchanged. |
 | 2026-11-15 | Phase 3 EDA was reviewed and approved. | Student review of the notebook, seven figures, and `outputs/eda_report.md`. |
-| 2026-11-15 | Modelling notes from that review: debtor and tuition dates are unknown; macroeconomic reference dates are unknown; a semester grade of 0 must not automatically be treated as missing; matching semester features are strongly correlated; balanced accuracy and macro recall are equivalent for this multiclass task; the majority-class share is about 49.93% (Graduate, 49.9322%). | Recorded for later design. No model has been trained, so these are not performance scores. |
+| 2026-11-15 | Modelling notes from that review: debtor and tuition dates are unknown; macroeconomic reference dates are unknown; a semester grade of 0 must not automatically be treated as missing; matching semester features are strongly correlated; balanced accuracy and macro recall are equivalent for this multiclass task; the majority-class share is about 49.93% (Graduate, 49.9322%). | Recorded at the EDA review. The clause that no model had been trained described that moment, before Phase 5. These notes are not themselves model scores. |
 | 2026-11-15 | Provisionally retain `Displaced`, `Educational special needs`, `Scholarship holder`, and `International`. | Student Option A. Their individual UCI descriptions do not give measurement dates. Retention assumes the dataset narrative makes them available after the second semester. That date is not verified. The final report must state the assumption. |
 | 2026-11-15 | Keep recorded semester grade zeros as numeric zero. Exclude a zero-grade sensitivity analysis from the initial implementation. | Student decision. The meaning of 0 remains ambiguous. Do not impute, replace, or drop rows because of those zeros. |
 | 2026-11-15 | Phase 4 methodology approved and frozen. Supersedes the 2026-11-14 note that the split ratio and seed were unchosen. | Student approval of the six remaining decisions: dated features retained and the six unresolved columns excluded; encoding fixed; no derived features; 80/20 stratified split with seed 42 and 5-fold stratified cross-validation on the training data; most-frequent dummy baseline and the metric list; scaling for Logistic Regression only. The four provisional binaries and the zero-grade rule stay in force. Completion of Phase 4 is recorded in the next row. |
 | 2026-11-15 | Implement the frozen preprocessing path without training a model. | `src/preprocessing.py` selects 30 features, splits 3,539/885 with seed 42, and builds unfitted logistic and forest preprocessors. Tests passed, 13 of 13. Raw SHA-256 was unchanged. |
-| 2026-11-15 | Phase 4 is complete and approved. Current phase is Phase 5 — Model Development and Evaluation, and its implementation has not started. | The student reviewed and verified the preprocessing implementation. The frozen methodology was not changed. No model was trained. |
-| 2026-11-15 | Phase 5 configuration decisions, later frozen the same day. | Student approval of the grids, `max_iter=2000`, `solver="lbfgs"`, forest `random_state=42`, `n_jobs=1` on the forest and on `GridSearchCV`, `refit=True`, `error_score="raise"`, tie-break by declared grid order, no single winner, and output directories `outputs/models/` and `outputs/evaluation/`. Planned size: 40 + 180 = 220 CV fits, plus two training-set refits. Not run. |
+| 2026-11-15 | Phase 4 is complete and approved. Current phase is Phase 5 — Model Development and Evaluation, and its implementation has not started. | Historical status at Phase 4 approval, before Phase 5 training. The student reviewed and verified the preprocessing implementation. The frozen methodology was not changed. No model had been trained at that point. |
+| 2026-11-15 | Phase 5 configuration decisions, later frozen the same day. | Historical configuration record, written before the run. Student approval of the grids, `max_iter=2000`, `solver="lbfgs"`, forest `random_state=42`, `n_jobs=1` on the forest and on `GridSearchCV`, `refit=True`, `error_score="raise"`, tie-break by declared grid order, no single winner, and output directories `outputs/models/` and `outputs/evaluation/`. Planned size: 40 + 180 = 220 CV fits, plus two training-set refits. The "not run" status applied when this row was written. |
 | 2026-11-15 | Phase 5 experimental design formally approved and frozen. Implementation had not started when this row was written. | The student marked `docs/phase-5-experimental-design.md` final. The grids, fit counts, tie-break, metrics, and evaluation rules were not changed. |
 | 2026-11-15 | Implement the frozen Phase 5 design and leave the phase open for review. | The student asked for the training run. `src/run_phase5.py` completed 40 logistic and 180 forest cross-validation fits, two training refits, and one dummy fit. Test scores were not used to change parameters. Phase 5 was not marked complete at that point. |
 | 2026-11-15 | Phase 5 — Model Development and Evaluation is complete and approved. | The student reviewed and approved the implementation, model results, evaluation metrics, report, and generated artefacts. 27 tests had passed. The run had completed 220 cross-validation fits, two training-set refits, and one Dummy baseline fit. Both tuned models were evaluated independently on the untouched test set. The frozen design was not changed. No later phase was started. |
+| 2026-11-15 | Close a third classifier and a single overall winner. | Closed by the approved Phase 5 design. No additional classifier is authorised. The three saved test evaluations stay independent. |
+| 2026-11-15 | Approve the revised Phase 6 scope and authorize documentation synchronization. | The student approved Results Interpretation and Coursework Report Preparation, and authorized updates to `docs/Phases.md`, `docs/Memory.md`, `docs/PRD.md`, and `README.md`. Phase 6 implementation had not started when this row was written. Phase 5 stays frozen. |
+| 2026-11-15 | Start Phase 6 interpretation. Do not mark it complete. | The student authorised results interpretation and report evidence mapping. The draft is `docs/phase-6-results-interpretation.md`. It copies saved scores and does not add an experiment. Phase 5 remains complete, approved, and frozen. The Phase 6 checkboxes stay open until the student reviews the draft. |
+| 2026-11-16 | Approve the Phase 6 interpretation and evidence map. Keep Phase 6 open. | The student approved `docs/phase-6-results-interpretation.md`. RQ1 remains the only approved predictive question. Two descriptive EDA questions are approved and mapped to `outputs/eda_report.md` and the existing EDA figures. The earlier proposed RQ2 and RQ3 remain unapproved. The official brief and report template were reviewed. No report was drafted. Phase 5 stays frozen. |
+| 2026-11-17 | Approve the report-preparation decisions. Keep Phase 6 open. | Title: Predicting Student Academic Outcomes Using Logistic Regression and Random Forest. Audience: academic and technical readers familiar with introductory machine learning. Predictive RQ1 stays beside the two descriptive EDA questions. Five-fold training-only cross-validation is validation evidence, and the 885-row holdout is unseen test evidence. Separate final-model training-set metrics were not produced. A comparison figure was approved and had not yet been created when this row was written. It is now `figures/model_comparison/figure_01_model_comparison_f1.png`. The preparation package is a Word report, a technical ZIP, and the GitHub link in the report. Moodle instructions remain unverified. |
+| 2026-11-17 | Inspect the official brief and template now stored at the repository root. | `CMP6202 Assessment Brief  2026-27.docx` and `CMP6202 Individual Report Template 2026-27.docx` were inspected. The 2026-11-16 review remains the earlier review. The files are no longer absent. The inspected word-count rule is a 3,000-word maximum with a +10% margin only. The template contents are nested, and the 13 content headings are mapped in `docs/phase-6-report-outline.md`. Approved report decisions were not changed. |
 
 ## 10. Open Decisions
 
-Closed by the 2026-11-14 decision: dataset, task type, and target column. The items below are still open.
+Closed by earlier decisions: dataset, task type, and target column. Closed by the approved Phase 5 design: a third classifier, and a single overall winner. Closed on 2026-11-16 as descriptive questions only: EDA Question 1 and EDA Question 2. Closed on 2026-11-17: the report title, the explicit audience, the seen-data reporting rule, the report presentation of predictive RQ1 beside the two descriptive EDA questions, and the preparation package of a Word report, a technical ZIP, and the GitHub link. The comparison figure is created and verified at `figures/model_comparison/figure_01_model_comparison_f1.png`. The items below are still open.
 
-- Further research questions beyond the one approved question
-- RQ2 and RQ3, which remain proposed and are not approved
-- A third algorithm, if any
-- The final model-selection rule
-- Certifications to complete
-- Project / report title
-- Explicit report target audience
+- The earlier proposed RQ2 and RQ3, which remain unapproved
+- Whether descriptive EDA questions satisfy the brief's two-or-three research-question requirement. The report presentation is resolved, but that presentation does not guarantee the brief's count. Confirm with the module leader if that reading is unclear.
+- Certifications to complete, including whether any certificate meets an "achieved during the project" condition
 - Whether later analysis stays on Python 3.13.7 or moves to another 3.11+ release
 - Names of the seven alternative datasets
+- Feature-impact analysis. It was not performed and remains outside the frozen Phase 5 design.
+- Public accessibility and completeness of https://github.com/juraidyousaf/CMP6202-AI-ML-Project. These have not been independently verified.
+- The reflection, which has not been written from the student's own learning
+- The generative-AI declaration. It must cover why, what, which tools, and how the output was checked. ChatGPT and Cursor were used. Do not state that no generative AI was used.
+- Verification of the final Moodle submission instructions when the actual submission is prepared. The approved preparation package is a separate Word report, a technical project ZIP, and the public GitHub link in the report. Neither file exists yet.
+- A report table of every dataset attribute's name, data type, and meaning, copied from `outputs/dataset_audit.md` and the UCI documentation. Do not invent those descriptions.
+- The brief and template were inspected on 2026-11-17 and are stored at the repository root as `CMP6202 Assessment Brief  2026-27.docx` and `CMP6202 Individual Report Template 2026-27.docx`. The brief sets a maximum of 3,000 words with a +10% margin only. Page 1 also says 3,000 words excluding references. Headings, tables, citations, quotes, and lists in the main body count. Material before the body, and references, bibliographies, and appendices, do not. The brief does not state a lower margin. It also requires 11-point font, 1.5 line spacing, anonymous marking by student number only, BCU Harvard referencing, a cover sheet completed and appended, and the printed deadline fields 4th December 2026 and 03:00PM. The template contents are nested. The 13 content headings are mapped in `docs/phase-6-report-outline.md`. They are not 13 top-level template chapters.
 
 ## 11. Files Created
 
 | Path | Purpose | Status |
 | --- | --- | --- |
-| `docs/PRD.md` | Requirements, selected problem, open decisions | Updated 2026-11-14 for the dataset decision; pending student review |
-| `docs/Architecture.md` | ML workflow, planned models, leakage rules | Updated 2026-11-14; no code added |
-| `docs/Rules.md` | Engineering and dataset-specific constraints | Updated 2026-11-14 |
-| `docs/Phases.md` | Checkbox roadmap; Phase 1 dataset items checked | Updated 2026-11-14; phase not fully closed |
-| `docs/Design.md` | Chart rules, including three-class labels | Updated 2026-11-14; no figures created |
-| `docs/Memory.md` | Living project state | Updated 2026-11-14 after Phase 0 setup |
-| `README.md` | Project overview, dataset, setup, and licence caveat | Created 2026-11-14 |
+| `docs/PRD.md` | Requirements, selected problem, open decisions | Updated on 2026-11-17 with the approved title, audience, seen-data rule, comparison-figure approval, submission package, official brief and template filenames, and the verified word-count rule. Proposed RQ2 and RQ3 remain unapproved. |
+| `docs/Architecture.md` | ML workflow, planned models, leakage rules | Updated 2026-11-14. Not edited in the 2026-11-15 documentation sync. Later documentation aligned it with the frozen Phase 5 workflow and the verified comparison figure. Some early sentences may still predate the code. |
+| `docs/Rules.md` | Engineering and dataset-specific constraints | Updated 2026-11-14. Not edited in the 2026-11-15 documentation sync. Later documentation recorded the frozen Phase 5 comparison, including the 220 cross-validation fits and the most-frequent dummy. |
+| `docs/Phases.md` | Checkbox roadmap | Phase 5 remains approved and frozen. Phase 6 remains open. The 2026-11-17 report-preparation decisions are recorded. Historical Phases 6–8 are superseded. |
+| `docs/Design.md` | Chart rules, including three-class labels | Records the verified figure `figures/model_comparison/figure_01_model_comparison_f1.png`. |
+| `docs/Memory.md` | Living project state | Updated on 2026-11-17 for the approved report-preparation decisions, official-document availability, and the file inventory. Phase 6 is not complete. |
+| `docs/phase-6-results-interpretation.md` | Phase 6 interpretation and report evidence map | Interpretation approved on 2026-11-16. Report-preparation decisions recorded on 2026-11-17. Availability sentences corrected after the official files were stored. Not a graded report. No new score. |
+| `docs/phase-6-report-outline.md` | Report outline and evidence map | Created on 2026-11-17 from the inspected brief and template. Not the report. Phase 6 is not complete. |
+| `CMP6202 Assessment Brief  2026-27.docx` | Official assessment brief | Inspected on 2026-11-17. Stored at the repository root. |
+| `CMP6202 Individual Report Template 2026-27.docx` | Official individual report template | Inspected on 2026-11-17. Stored at the repository root. |
+| `README.md` | Project overview, dataset, setup, commands, and licence | Updated on 2026-11-17 with the approved title, audience, submission package, official brief and template filenames, and the verified word-count rule. Public repository access was not independently verified. A fresh third-party rerun was not performed. |
 | `.gitignore` | Virtual environment, caches, checkpoints, and secrets. Does not ignore `data/raw/`. | Created 2026-11-14 |
 | `requirements.txt` | Pinned direct dependencies measured from `.venv` | Created 2026-11-14 |
 | `.venv/` | Local Python 3.13.7 environment | Created 2026-11-14; ignored by Git |
@@ -155,13 +170,15 @@ Closed by the 2026-11-14 decision: dataset, task type, and target column. The it
 | `outputs/models/` | Fitted logistic, forest, and dummy pipelines. | Written by the 2026-11-15 run and approved by the student the same day. |
 | `outputs/evaluation/` | CV tables, test metrics, predictions, and the evaluation report. | Written by the 2026-11-15 run and approved by the student the same day. Scores were not typed by hand. |
 | `figures/eda/` | Seven EDA figures | Written by the notebook |
-| `data/interim/` | Future intermediate data | Empty |
-| `data/processed/` | Future model-ready data | Empty |
-| `notebooks/` | Future analysis notebooks | Empty |
-| `src/` | Shared Python modules | Contains the audit, preprocessing, training, evaluation, and Phase 5 runner. |
-| `figures/` | EDA figures | `figures/eda/` holds the seven EDA figures. |
+| `figures/model_comparison/figure_01_model_comparison_f1.png` | Verified model-comparison figure | Written by `src/plot_model_comparison.py` from saved evaluation files. Panel A is selected logistic and forest five-fold training-only CV macro F1. No dummy CV score was saved. Panel B is holdout macro F1 for all three models. Panel C is holdout F1 for Dropout, Enrolled, and Graduate. |
+| `src/plot_model_comparison.py` | Reproducible comparison-figure script | Reads saved evaluation files only. It does not train or evaluate a model. |
+| `data/interim/` | Future intermediate data | No intermediate data. Contains only `.gitkeep`. |
+| `data/processed/` | Future model-ready data | No saved model matrix. Contains only `.gitkeep`. |
+| `notebooks/` | EDA notebook directory | Contains `01_exploratory_data_analysis.ipynb` and `.gitkeep`. No other notebook. |
+| `src/` | Shared Python modules | Contains the audit, preprocessing, training, evaluation, the Phase 5 runner, and `plot_model_comparison.py`. |
+| `figures/` | EDA figures and the comparison figure | `figures/eda/` holds the seven EDA figures. `figures/model_comparison/figure_01_model_comparison_f1.png` is the verified comparison figure. |
 | `outputs/` | Audit, EDA, and Phase 5 results | Contains `dataset_audit.md`, `eda_report.md`, `models/`, and `evaluation/`. |
-| `references/` | Future checked citation notes | Empty |
+| `references/` | Future checked citation notes | No citation notes. Contains only `.gitkeep`. |
 
 Not created, on purpose: `ucimlrepo`, processed datasets, and the graded report. Fitted model files now exist under `outputs/models/`.
 
@@ -211,8 +228,8 @@ The dummy confusion matrix in that file has every test row in the Graduate colum
 
 No modelling blocker. The following conflicts were kept open instead of being overwritten:
 
-1. Phase 1 asked for two or three research questions. One question was approved. The others stay open.
-2. Report audience and provisional title were not part of this decision.
+1. Phase 1 asked for two or three research questions. RQ1 is the approved predictive question. Two descriptive EDA questions were approved on 2026-11-16. The earlier proposed RQ2 and RQ3 remain unapproved. Whether the descriptive questions count toward the brief's requirement should be confirmed with the module leader if that is unclear.
+2. The report title and audience were decided on 2026-11-17. The official brief and template were reviewed on 2026-11-16. On 2026-11-17 both files were inspected and are stored at the repository root. The approved preparation package is a Word report, a technical ZIP, and the GitHub link. The final Moodle instructions have not been verified. Separate final-model training-set metrics were not produced. The verified comparison figure is `figures/model_comparison/figure_01_model_comparison_f1.png`. Feature-impact analysis was not performed. The reflection, certificates, attribute write-up, and generative-AI declaration are not complete. Public GitHub access has not been independently verified.
 3. The student stated on 2026-11-14 that Phase 0 is complete and approved.
 4. UCI metadata and the local file now agree on 4,424 instances, 36 input features, and no missing values. The agreement is recorded separately from the UCI claim. The zip extract and UCI's direct CSV URL are not byte-identical.
 5. UCI states a strong class imbalance without giving class counts on the dataset summary. The local file counts are now measured: Graduate 2,209, Dropout 1,421, Enrolled 794.
@@ -221,6 +238,8 @@ No modelling blocker. The following conflicts were kept open instead of being ov
 8. Logistic Regression, Random Forest, and the most-frequent dummy were fit on 2026-11-15 under the frozen Phase 5 design. The student approved the measured scores in `outputs/evaluation/` and the model artefacts on 2026-11-15. Phase 5 is complete. The test scores were not used to change the design.
 9. UCI's download example uses `ucimlrepo`. That package is not approved and was not installed.
 10. On 2026-11-14 the UCI dataset page licence section was quoted: Creative Commons Attribution 4.0 International (CC BY 4.0), linking to https://creativecommons.org/licenses/by/4.0/legalcode.
+11. `outputs/evaluation/run_metadata.json` still records `phase_5_marked_complete` as false, and `outputs/evaluation/phase5_evaluation_report.md` says that file does not itself mark Phase 5 complete. Those generated files predate the approval and were not edited. The approval record is in `docs/Phases.md` and this file.
+12. The 2026-11-16 evidence-map synchronization did not edit `docs/Architecture.md`, `docs/Rules.md`, or `docs/Design.md`. Later documentation aligned those files with the frozen Phase 5 state. `docs/Architecture.md` now records `figures/model_comparison/figure_01_model_comparison_f1.png` and `src/plot_model_comparison.py`. `docs/Rules.md` does not describe the comparison figure.
 
 The local folder name (`CMP6202-AI-ML`) and the GitHub repository name (`CMP6202-AI-ML-Project`) differ. This is a naming note, not a blocker.
 
@@ -243,6 +262,11 @@ The local folder name (`CMP6202-AI-ML`) and the GitHub repository name (`CMP6202
 | 2026-11-15 | Cursor (coding agent) | Marked the Phase 5 experimental design formally approved and frozen in `docs/phase-5-experimental-design.md`, `docs/Phases.md`, and `docs/Memory.md`. | Documentation only. The student stated that the design was final. Grids, fit counts, the tie-break, metrics, and evaluation rules were left unchanged. No script, dataset, or model was changed or run. Implementation was not started. |
 | 2026-11-15 | Cursor (coding agent) | Implemented the frozen Phase 5 experiment in `src/model_training.py`, `src/model_evaluation.py`, `src/run_phase5.py`, and the new tests. Ran the suite and `src/run_phase5.py`. Updated `docs/Phases.md`, `docs/Memory.md`, and factual status lines in `docs/phase-5-experimental-design.md`. | `python -m unittest discover -s tests -v` passed 27 tests. `src/run_phase5.py` exited 0 and wrote `outputs/evaluation/`. The run recorded 40 and 180 finite cross-validation fits, two training refits, and one dummy fit. Raw SHA-256 was unchanged. Phase 5 was not marked complete at that point. |
 | 2026-11-15 | Cursor (coding agent) | Recorded the student's approval of completed Phase 5 in `docs/Phases.md`, `docs/Memory.md`, and the status lines of `docs/phase-5-experimental-design.md`. | Documentation only. The student stated that the implementation, model results, evaluation metrics, report, and generated artefacts had been reviewed and approved. The frozen design was not edited. No source file, test, dataset, model, or evaluation output was changed. No later phase was started. |
+| 2026-11-15 | Cursor (coding agent) | Synchronized `docs/Phases.md`, `docs/Memory.md`, `docs/PRD.md`, and `README.md` with the approved Phase 5 state and the approved Phase 6 scope. | Documentation only. The student approved the revised Phase 6 scope and authorized these four files. No script was run for this row. No model was trained or evaluated. Phase 6 implementation was not started. |
+| 2026-11-15 | Cursor (coding agent) | Wrote `docs/phase-6-results-interpretation.md` and recorded that Phase 6 had started in `docs/Phases.md` and `docs/Memory.md`. | Documentation only. Scores were copied from `outputs/evaluation/test_metrics.json`, `per_class_metrics.csv`, `confusion_matrices.csv`, and `selected_parameters.json`. EDA figures and counts were copied from `outputs/eda_report.md`. `src/run_phase5.py` was not run. No source file, test, dataset, model, metric, prediction, or figure was edited. Phase 6 was not marked complete. |
+| 2026-11-16 | Cursor (coding agent) | Synchronized `docs/Phases.md`, `docs/Memory.md`, `docs/PRD.md`, and `README.md` with the approved Phase 6 evidence map and the reviewed assessment brief and report template. | Documentation only. `docs/phase-6-results-interpretation.md` was not edited. No script was run. No model was trained or evaluated. Phase 5 remains frozen. Phase 6 was not marked complete. No report was drafted. |
+| 2026-11-17 | Cursor (coding agent) | Recorded the approved report title, audience, seen-data reporting rule, comparison-figure approval, and submission package in the planning documents and the Phase 6 evidence map. | Documentation only. No script was run. No model was trained or evaluated. The comparison figure had not yet been created when this row was written. It is now `figures/model_comparison/figure_01_model_comparison_f1.png`. No training-set metrics were calculated. Phase 5 remains frozen. Phase 6 was not marked complete. No report was drafted. |
+| 2026-11-17 | Cursor (coding agent) | Synchronized the planning documents with the verified comparison figure and the resolved report-question presentation. | Documentation only. The figure and `src/plot_model_comparison.py` were not edited or rerun. No model was trained or evaluated. Phase 5 remains frozen. Phase 6 was not marked complete. |
 
 Add a row whenever an AI tool drafts code, analysis, citations, or report text. Verification means what the student (or a rerun) actually checked.
 
@@ -250,25 +274,28 @@ Add a row whenever an AI tool drafts code, analysis, citations, or report text. 
 
 **Completed this session**
 
-- Recorded the student's approval of Phase 5 — Model Development and Evaluation on 2026-11-15.
-- Left the frozen experimental design and the measured results unchanged.
-- Did not start Phase 6 or any later phase.
-- Did not edit source code, tests, data, models, or evaluation outputs.
+- Recorded the 2026-11-17 report title, audience, seen-data reporting rule, comparison-figure approval, and submission package.
+- Left Phase 5 frozen. Did not mark Phase 6 complete. Did not draft the report. Did not edit or regenerate `figures/model_comparison/figure_01_model_comparison_f1.png`. Did not start Phases 9–12.
+- Did not edit source code, tests, data, models, evaluation outputs, or figures.
 
 **Currently being worked on**
 
-- Nothing. Phase 5 is complete and approved. No later phase has been started.
+- Nothing further in this synchronization. Phase 6 remains open for report preparation.
 
 **Exact next task**
 
-- Wait for the student before starting any later phase. Do not change the frozen design or the measured results.
+- Wait for the student's review before drafting the report. Do not change the frozen design, the measured results, or the verified comparison figure. Do not calculate separate final-model training-set metrics. Verify the final Moodle instructions only when the actual submission is prepared.
 
 **Constraints the next session must keep**
 
 - Active dataset only: UCI 697, CC BY 4.0, target `Target`, classes Dropout, Enrolled, and Graduate.
 - Prediction point: after the second semester, using only information available then.
-- RQ1 is the only approved research question. RQ2 and RQ3 stay proposed.
-- Models fit under the frozen design: Logistic Regression, Random Forest, and `DummyClassifier(strategy="most_frequent")`. Scores are only the values in `outputs/evaluation/`.
+- The report title is Predicting Student Academic Outcomes Using Logistic Regression and Random Forest. The audience is academic and technical readers familiar with introductory machine learning.
+- RQ1 is the only approved predictive research question. Its wording stays unchanged. EDA Question 1 and EDA Question 2 are approved descriptive questions and use existing EDA evidence. Predictive modelling and descriptive EDA stay distinct. The earlier proposed RQ2 and RQ3 stay unapproved.
+- Five-fold training-only cross-validation is validation evidence. The 885-row holdout is unseen test evidence. Do not call cross-validation results training-set performance. Separate final-model training-set metrics were not produced.
+- The verified comparison figure is `figures/model_comparison/figure_01_model_comparison_f1.png`, written by `src/plot_model_comparison.py` from saved evaluation files. Panel A is selected Logistic Regression and Random Forest five-fold training-only CV macro F1. No dummy CV score was saved. Panel B is holdout macro F1 for the dummy, Logistic Regression, and Random Forest. Panel C is holdout F1 for Dropout, Enrolled, and Graduate. It must not name a winner.
+- The preparation package is a separate Word report, a technical project ZIP, and the public GitHub link in the report. The final Moodle instructions have not been verified.
+- Models fit under the frozen design: Logistic Regression, Random Forest, and `DummyClassifier(strategy="most_frequent")`. Scores are only the values in `outputs/evaluation/`. No single overall winner is authorised. No third classifier is authorised. The historical Phase 6–8 modelling checklists must not be executed. Feature importance and coefficient analysis need a separate approval.
 - Balanced accuracy and macro recall are equivalent for this multiclass task. The full-data majority-class share is about 49.93% (Graduate, 49.9322%). That share is not a model score. The dummy test accuracy is a separate measured result.
 - A semester grade of 0 stays numeric zero. Do not impute it or run a zero-grade sensitivity analysis in the initial implementation. What 0 means is still unresolved.
 - `Displaced`, `Educational special needs`, `Scholarship holder`, and `International` are provisionally retained. Their measurement dates are not verified.

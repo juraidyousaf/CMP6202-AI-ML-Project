@@ -5,9 +5,9 @@ Internal planning document for CMP6202. This describes the machine-learning work
 Student ID: s24156365  
 Repository name: CMP6202-AI-ML-Project
 
-The dataset and task are selected. Planned models are named below and have not been trained. No result exists. Split ratio, `random_state`, and a third algorithm stay **TBD**.
+The dataset and task are selected. Phases 0–5 are complete and approved. Phase 3 exploratory analysis, Phase 4 preprocessing, and Phase 5 model development and evaluation are complete. Logistic Regression and Random Forest were tuned and evaluated. The most-frequent dummy classifier is the baseline. The approved split is 80/20, stratified on `Target`, with `random_state=42`. A third competitive classifier is closed. Phase 5 results are frozen in `outputs/evaluation/`. No single overall winner was approved. Phase 6 is results interpretation and coursework report preparation. It remains open, and no report has been drafted.
 
-Folders in the tree below are the intended layout. Create a folder when a phase needs it. Do not add empty placeholder trees "for later" unless a file is about to go in them. The dataset file is not in the repository yet. `data/raw/` must be created when that file is actually added.
+The audited dataset is already in `data/raw/`. Do not edit those raw files.
 
 ---
 
@@ -58,22 +58,24 @@ Figures / Tables
 Report + Reflection
 ```
 
-**Leakage warning.** Split and preprocessing decisions must avoid data leakage. Fit transformers, feature-selection rules, and resampling on training data only. Choose hyperparameters with cross-validation on the training portion. Leave the test set unseen until the final evaluation of already chosen models. Do not use `Target` as an input. Use only information available by the end of the second semester. Which columns fail that rule is a Phase 2 check, not a finding recorded here.
+**Leakage warning.** Split and preprocessing decisions must avoid data leakage. Fit transformers, feature-selection rules, and resampling on training data only. Choose hyperparameters with cross-validation on the training portion. Leave the test set unseen until the final evaluation of already chosen models. Do not use `Target` as an input. Use only information available by the end of the second semester. The column check is recorded in `outputs/dataset_audit.md` and `docs/phase-4-preprocessing-plan.md`. Six unresolved columns stay excluded. Do not add a feature without a documented reason.
 
-How this lines up with the phase plan in `docs/Phases.md`:
+How this lines up with the approved phases in `docs/Phases.md`:
 
-- Baseline training records performance before tuning.
-- Cross-validation and tuning select settings without using the test set.
-- The test set is for the final comparison. An earlier look at the test set, if it happens, must not decide hyperparameters, and the report must disclose it.
+- The most-frequent dummy is the untuned baseline. The approved design did not save a separate untuned Logistic Regression or Random Forest.
+- Logistic Regression and Random Forest were tuned with `GridSearchCV` and five-fold stratified cross-validation on the training data only, then refit on the full training portion.
+- The 885-row test set was used once after those settings were frozen. It must not be used to change parameters, features, or preprocessing.
 
 Feature engineering may be "none", if EDA shows no justified transform. Record that decision rather than adding features for their own sake.
 
-## 3. Proposed Repository Structure
+## 3. Repository Structure
 
-Intended layout of `CMP6202-AI-ML-Project`:
+Current layout of the files that exist in this repository:
 
 ```text
 CMP6202-AI-ML-Project/
+├── CMP6202 Assessment Brief  2026-27.docx
+├── CMP6202 Individual Report Template 2026-27.docx
 ├── README.md
 ├── requirements.txt
 ├── .gitignore
@@ -83,56 +85,68 @@ CMP6202-AI-ML-Project/
 │   ├── Rules.md
 │   ├── Phases.md
 │   ├── Design.md
-│   └── Memory.md
+│   ├── Memory.md
+│   ├── phase-4-preprocessing-plan.md
+│   ├── phase-5-experimental-design.md
+│   ├── phase-6-results-interpretation.md
+│   └── phase-6-report-outline.md
 ├── data/
-│   ├── raw/
-│   ├── interim/
-│   └── processed/
+│   └── raw/
+│       ├── data.csv
+│       └── predict+students+dropout+and+academic+success.zip
 ├── notebooks/
-│   ├── 01_data_understanding.ipynb
-│   ├── 02_eda.ipynb
-│   ├── 03_preprocessing.ipynb
-│   ├── 04_model_training.ipynb
-│   └── 05_model_evaluation.ipynb
+│   └── 01_exploratory_data_analysis.ipynb
 ├── src/
-│   ├── data/
-│   ├── features/
-│   ├── models/
-│   ├── evaluation/
-│   └── utils/
+│   ├── data_audit.py
+│   ├── preprocessing.py
+│   ├── model_training.py
+│   ├── model_evaluation.py
+│   ├── run_phase5.py
+│   └── plot_model_comparison.py
+├── tests/
+│   ├── test_preprocessing.py
+│   ├── test_model_training.py
+│   └── test_model_evaluation.py
 ├── figures/
+│   ├── eda/
+│   └── model_comparison/
+│       └── figure_01_model_comparison_f1.png
 ├── outputs/
-│   ├── metrics/
+│   ├── dataset_audit.md
+│   ├── eda_report.md
 │   ├── models/
-│   └── tables/
-├── certificates/
-├── report/
+│   └── evaluation/
 └── references/
 ```
 
+`data/interim/` and `data/processed/` exist. They do not hold a saved model matrix. The approved split is created in memory by `src/preprocessing.py`.
+
 Rules for this tree:
 
-- Add a folder when the first real file needs it.
-- Keep the five notebooks in that order. If a notebook is unnecessary after the dataset is known, document why it was merged or skipped. Do not renumber silently.
-- `src/` holds reusable functions once logic is shared or worth testing. A short project may keep most steps in notebooks until duplication appears.
-- `data/raw/` is immutable. Do not commit a huge file if the host or the licence makes a download step more appropriate. The README must still point at the exact source.
-- `certificates/` stores real certification evidence only.
-- `report/` holds the report source or export when writing starts. Do not draft the final report during planning.
-- `references/` holds notes or exported citation details the student has actually used. Do not create placeholder citations.
+- `data/raw/` is immutable. The README points at the stored file and its UCI source.
+- `src/` holds the audit, preprocessing, training, evaluation, the Phase 5 runner, and `src/plot_model_comparison.py`. The tests import the modelling modules. The plotting script only reads saved evaluation files.
+- `figures/eda/` holds the seven exploratory figures written by the notebook.
+- `figures/model_comparison/figure_01_model_comparison_f1.png` is the verified comparison figure. Panel A is selected Logistic Regression and Random Forest five-fold training-only cross-validation macro F1. No dummy cross-validation score was saved. Panel B is holdout macro F1 for the dummy, Logistic Regression, and Random Forest. Panel C is holdout F1 for Dropout, Enrolled, and Graduate.
+- `outputs/models/` holds the three fitted estimators. `outputs/evaluation/` holds the saved Phase 5 metrics and reports.
+- `references/` holds citation notes the student has actually used. Do not create placeholder citations. It currently contains only `.gitkeep`.
+- `CMP6202 Assessment Brief  2026-27.docx` and `CMP6202 Individual Report Template 2026-27.docx` are the inspected official documents at the repository root. They are planning sources, not model inputs.
+- `docs/phase-6-results-interpretation.md` is the approved Phase 6 interpretation. `docs/phase-6-report-outline.md` is the report outline. Neither file is the graded report.
+- Do not draft the coursework report in this architecture note. Phase 6 remains open.
 
 ## 4. File Responsibilities
 
 | Location | Responsibility |
 | --- | --- |
-| `notebooks/` | The readable analysis path: load, EDA, preprocessing, training, evaluation. Each notebook starts with a short aim and ends with an interpretation. Notebooks call shared functions rather than pasting a second copy of the same cleaning code. |
-| `src/` | Reusable Python: loading, validation, transforms, training helpers, metric tables. No notebook-only side effects hidden inside imports. |
+| `notebooks/` | The exploratory notebook, `notebooks/01_exploratory_data_analysis.ipynb`. It reads the raw file and writes the EDA figures. It does not train the models. |
+| `src/` | The audit, the leakage-safe preprocessing, the training and evaluation functions, `src/run_phase5.py`, and `src/plot_model_comparison.py`. |
 | `data/raw/` | The original dataset file, or the exact file produced by the documented download. Never overwritten by cleaning. |
 | `data/interim/` | Optional checkpoints between raw and model-ready data (for example after type fixes, before the model matrix). Safe to regenerate. |
 | `data/processed/` | The model-ready outputs of the leakage-safe pipeline, if saving them helps reproduction. Prefer rebuilding them with a script or notebook over hand-edited files. |
-| `figures/` | Report-ready charts exported by code, using the names in `docs/Design.md`. |
-| `outputs/` | Saved metrics, comparison tables, and persisted models. These files are evidence. They are produced by a run, not typed by hand. |
-| `docs/` | Planning and working-state documents: requirements, architecture, rules, phases, visual standards, and `Memory.md`. These are not the graded report. |
-| `report/` | The coursework report and any figures pasted into it. Numbers in the report must match `outputs/` and `figures/`. |
+| `figures/` | Charts exported by code. The exploratory figures are in `figures/eda/`. The comparison figure is `figures/model_comparison/figure_01_model_comparison_f1.png`. |
+| `outputs/` | `outputs/dataset_audit.md`, `outputs/eda_report.md`, fitted models in `outputs/models/`, and Phase 5 evidence in `outputs/evaluation/`. These files are produced by a run, not typed by hand. |
+| `docs/` | Planning and working-state documents: requirements, architecture, rules, phases, visual standards, and `Memory.md`. Phase 6 planning is `docs/phase-6-results-interpretation.md` and `docs/phase-6-report-outline.md`. These are not the graded report. |
+| Repository root | `CMP6202 Assessment Brief  2026-27.docx` and `CMP6202 Individual Report Template 2026-27.docx`. Inspected on 2026-11-17. They are not model inputs. |
+| Coursework report | Not drafted. There is no `report/` directory. When the report is written, its numbers must match `outputs/` and `figures/`. |
 
 `README.md` is the front door: purpose, dataset source, setup, and run order. `requirements.txt` lists the libraries needed to run that order. `.gitignore` keeps caches, virtual environments, secrets, and oversized temporary files out of Git.
 
@@ -197,8 +211,8 @@ Required practices:
 - Fit imputers, scalers, encoders, feature selectors, and resampling on training data only. Apply those fitted objects to the test data.
 - The test set remains unseen until final evaluation. It is not a pool for trying ideas.
 - Use scikit-learn `Pipeline` and `ColumnTransformer` where they make the fit/transform boundary explicit. A manual split is acceptable only if the same boundary is obvious in the code.
-- Set `random_state` on the splitter and on estimators that use it. Record the seed next to the split description. The seed and the test fraction are still **TBD** for Phase 5.
-- Use a stratified split on `Target`. UCI says the creators used 80% train and 20% test. That ratio is not adopted until Phase 5 records it.
+- Set `random_state` on the splitter and on estimators that use it. The approved split is 80/20, stratified on `Target`, with `random_state=42`. UCI's example is not itself that approval.
+- Use a stratified split on `Target`. Do not replace the approved split.
 - Treat integer feature codes as categorical unless a recorded reason says a particular integer column is continuous or ordinal. UCI's own variable table marks many integer columns as coded categories.
 - UCI reports no missing values. Still inspect the loaded file before imputing. Do not skip that inspection because the repository page says none.
 - If rows are removed, record how many, why, and whether the removal rule was chosen using training data only.
@@ -206,14 +220,14 @@ Required practices:
 
 ## 7. Model Architecture
 
-The task is multiclass classification. The planned pair matches the original pattern and the approved research question. Nothing in this section has been fit.
+The task is multiclass classification. RQ1 is the only approved predictive research question. The two approved EDA questions are descriptive. The earlier proposed RQ2 and RQ3 remain unapproved. The approved comparison has been fit under `docs/phase-5-experimental-design.md`.
 
-1. **Planned baseline** — multinomial Logistic Regression, as the interpretable linear classifier. It has not been trained.
-2. **Planned second algorithm** — Random Forest, from a different model family. It has not been trained.
-3. **Optional third algorithm** — **TBD**. Add one only if EDA shows a gap the first two leave open.
-4. **Tune only after baseline evaluation** — record untuned results first. Then search a small, stated hyperparameter space with cross-validation on the training data.
+1. **Baseline** — `DummyClassifier(strategy="most_frequent")`, fitted once on the training portion and not tuned.
+2. **Tuned logistic model** — Logistic Regression, selected by `GridSearchCV` on the training folds and refit on the training portion.
+3. **Tuned forest** — Random Forest, selected by the same training-only search and refit on the training portion.
+4. **No third competitive classifier** — closed by the frozen design. Do not add one.
 
-EDA can still challenge this pair before Phase 6. Do not treat the research question's wording as permission to skip that review. The preferred model, once results exist, is the one the evidence supports for the stated audience and metrics. It is not automatically Random Forest. No preferred model exists yet.
+The search used five-fold stratified cross-validation on the training data only. The 885-row test set was predicted once after the searches finished. No single overall winner was approved. Phase 6 may interpret the saved results. It must not refit the models or choose a winner from the test scores.
 
 ## 8. Reproducibility Architecture
 
@@ -223,12 +237,12 @@ The repository is reproducible when all of the following are true:
 - `README.md` gives setup commands, the data location or exact source link, the licence, and the execution order.
 - Random seeds are fixed where they affect results, and the seed value is written down.
 - Code uses paths relative to the repository root. There are no absolute Windows or personal home-directory paths.
-- There is a single documented execution order (the numbered notebooks, or a script that replaces them).
-- The dataset source URL and licence are in the README and in the data dictionary. The approved source is https://archive.ics.uci.edu/dataset/697/predict, DOI https://doi.org/10.24432/C5MC89, licence CC BY 4.0. The README and data dictionary do not exist yet.
+- There is a documented execution order in `README.md`: the audit, the exploratory notebook, the tests, and `src/run_phase5.py`. `src/plot_model_comparison.py` redraws the saved comparison figure and does not refit the models.
+- The dataset source URL and licence are in the README and in `outputs/dataset_audit.md`. The approved source is https://archive.ics.uci.edu/dataset/697/predict, DOI https://doi.org/10.24432/C5MC89, licence CC BY 4.0.
 - Environment setup commands in the README match what a clean machine must run.
-- Saved outputs can be regenerated by that order. Hand-edited metric files are not evidence.
+- Saved outputs can be regenerated by that order. Hand-edited metric files are not evidence. Rerunning `src/run_phase5.py` would replace the approved outputs, so that command is not a casual refresh.
 
-Suggested README sections, to be written when code exists, not during this planning step:
+The README already contains:
 
 1. Project title and one-paragraph aim.
 2. Dataset name, source URL, licence, and retrieval date.

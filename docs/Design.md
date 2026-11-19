@@ -89,7 +89,7 @@ Additional rules:
 - Histograms and bar charts of the target must use the class names Dropout, Enrolled, and Graduate once those labels are confirmed in the loaded file. Do not leave the chart in unexplained integer codes.
 - Integer category codes must not be drawn as a continuous histogram or scatter axis unless the caption says they are codes and the plot is only a diagnostic.
 - A confusion matrix for this project must label both axes with the three class names. Do not rely on red versus green to separate Dropout from Graduate.
-- No target-distribution chart, correlation heatmap, or model-comparison chart exists yet. Do not create placeholder image files.
+- The target distribution is `figures/eda/figure_01_target_distribution.png`. The numerical correlation heatmap is `figures/eda/figure_07_numerical_correlation_heatmap.png`. The model-comparison figure is `figures/model_comparison/figure_01_model_comparison_f1.png`, written by `src/plot_model_comparison.py` from saved evaluation files. Panel A shows the selected Logistic Regression and Random Forest five-fold cross-validation macro F1 from the `selected` rows of `outputs/evaluation/logistic_regression_cv_results.csv` and `outputs/evaluation/random_forest_cv_results.csv`. No dummy cross-validation score was saved, so Panel A does not include one. Panel B shows holdout macro F1 for the dummy, Logistic Regression, and Random Forest from `outputs/evaluation/test_metrics.json` and `outputs/evaluation/test_metrics.csv`. Panel C shows holdout F1 for Dropout, Enrolled, and Graduate for the same three models from `outputs/evaluation/per_class_metrics.csv` and `outputs/evaluation/test_metrics.json`. Cross-validation macro F1 is validation evidence, not training-set performance. The plotted values were checked against those saved files. The chart must not name an overall winner.
 - Correlation heatmaps need a colour bar and feature names that remain readable. Drop or abbreviate names only with a key.
 - Save report figures into `figures/` using the names in section 8.
 - Do not add a title that states a conclusion the plotted data does not show.
@@ -100,9 +100,9 @@ Additional rules:
 - Put units in the header when the column has units (for example `RMSE (minutes)`).
 - Use a consistent number of decimal places within a column. Four decimal places is a reasonable default for rates and scores; choose a coarser rounding when the unit does not support false precision.
 - Keep tables narrow enough for the report. Split a wide comparison rather than shrinking the type below readability.
-- Highlight a "best" model only when the selection rule is stated (for example highest F1 on the test set). Do not highlight a cell because it looks impressive.
+- Do not highlight one model as the overall winner. The frozen design does not approve that conclusion, including a highlight based only on the highest test-set F1. A comparison table should show both tuned models and the dummy, with cross-validation macro F1 kept separate from holdout macro F1, plus per-class performance, the confusion matrices, and the strengths and weaknesses already supported by the saved outputs.
 - Give every report table a caption or label, and refer to that label in the text.
-- Build comparison tables in code and save them under `outputs/tables/` or `outputs/metrics/`. Do not retype numbers by hand.
+- The approved comparison tables are the files already saved under `outputs/evaluation/`. Do not retype those numbers by hand, and do not create `outputs/tables/` or `outputs/metrics/` for them.
 
 ## 7. Notebook Presentation
 
@@ -127,7 +127,9 @@ Use numbered, descriptive file names. Examples of the pattern:
 
 - `figure_01_target_distribution.png`
 - `figure_02_correlation_heatmap.png`
-- `figure_03_model_comparison.png`
+- `figures/model_comparison/figure_01_model_comparison_f1.png`
+
+The first two names illustrate the numbering pattern. The third path is the verified model-comparison figure. It does not reuse an EDA figure number. `figures/eda/figure_03_semester_grades_by_target.png` remains the semester-grade chart.
 
 Rules:
 

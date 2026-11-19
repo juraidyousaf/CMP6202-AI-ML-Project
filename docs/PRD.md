@@ -1,11 +1,11 @@
 # Product Requirements Document — CMP6202 AI/ML Project
 
-Internal planning document for module CMP6202 Artificial Intelligence and Machine Learning. This is not the final report. The report will be written later, at about 3,000 words, from verified project outputs.
+Internal planning document for module CMP6202 Artificial Intelligence and Machine Learning. This is not the final report. The CMP6202 Assessment Brief 2026–27 and Individual Report Template 2026–27 were reviewed on 2026-11-16 and inspected on 2026-11-17. They are stored at the repository root as `CMP6202 Assessment Brief  2026-27.docx` and `CMP6202 Individual Report Template 2026-27.docx`. The brief sets a maximum of 3,000 words with a +10% tolerance only, up to 3,300 words. There is no lower tolerance. Headings, tables, citations, quotes, and lists in the main body count. Material before the body, and references, bibliographies, and appendices, do not. The report has not been drafted.
 
 Student ID: s24156365  
 Repository name: CMP6202-AI-ML-Project
 
-The dataset and supervised task are now selected. Where a later modelling decision has not been made, this document marks it **TBD**. Do not fill those gaps by inventing a metric threshold, a class count, a split ratio, or a result. No model has been trained.
+The dataset, supervised task, split, and Phase 5 models are recorded. Where a report decision has not been made, this document marks it **TBD**. Do not fill those gaps by inventing a metric threshold, a class count, or a result. Phase 5 training and evaluation are complete and approved. The measured scores stay in `outputs/evaluation/`.
 
 The "product" in this document is a reproducible machine-learning coursework project: public data, supervised learning, documented experiments, and a report a marker can check against the code.
 
@@ -27,7 +27,7 @@ The workflow is:
 8. Compare the models and explain what the evidence supports.
 9. State limitations, reflect on learning, and make the work reproducible from the GitHub repository.
 
-The dataset and task are selected. The approved dataset is **Predict Students' Dropout and Academic Success** (UCI dataset 697). The task is multiclass classification of the `Target` column into Dropout, Enrolled, and Graduate. No model has been trained, and no result has been produced.
+The dataset and task are selected. The approved dataset is **Predict Students' Dropout and Academic Success** (UCI dataset 697). The task is multiclass classification of the `Target` column into Dropout, Enrolled, and Graduate. Phase 5 fitted Logistic Regression, Random Forest, and a most-frequent dummy classifier. The saved results are in `outputs/evaluation/`. The report that interprets them has not been written.
 
 ## 2. Academic Objective
 
@@ -40,39 +40,28 @@ The project must show that the student can do the following, and can show the wo
 - **Preprocessing** — handle missing values, duplicates, types, encoding, and scaling only where the data requires them, and document why.
 - **Model development** — train a simple baseline and at least one further algorithm from a different model family.
 - **Evaluation** — measure performance with metrics appropriate to the task and the class or error balance of the data.
-- **Model improvement** — use cross-validation and hyperparameter tuning after a baseline exists, then compare tuned models with that baseline.
+- **Model improvement** — the approved Phase 5 design tuned Logistic Regression and Random Forest with training-only cross-validation, and fitted the most-frequent dummy separately. The saved comparison is the three test evaluations. A requirement for a separate untuned Logistic Regression or Random Forest artefact conflicts with that frozen design and is not outstanding work.
 - **Reproducibility** — another reader must be able to install the documented environment and rerun the notebooks or scripts in the documented order.
 - **Critical discussion** — conclusions must follow from saved outputs. Limitations must be stated in plain language.
 - **Reflection** — the student records what they learned, what was difficult, and how those difficulties were handled. This section is student-owned.
 
 ## 3. Target Users / Audience
 
-**Primary audience**
+**Report audience, approved on 2026-11-17**
 
-- The university marker and module tutor, who will check the coursework requirements against the report, the code, the repository, and the evidence of learning.
+Academic and technical readers familiar with introductory machine learning.
 
-**Secondary audiences**
-
-- A technical reader or data scientist who wants to understand the method, the metrics, and the limits of the findings.
-- A student or developer who needs to reproduce the project from the README and the repository alone.
-
-The final report must name **one explicit target audience**. The dataset and problem are now known, and the audience is still:
-
-**Report target audience: TBD.**
-
-This was not chosen in the Phase 1 dataset decision. Do not assume the audience is a university support team, a student, or the marker.
-
-Writing for the marker and writing for a domain stakeholder are different. The report should not try to address every possible reader at once. Pick the audience that matches the problem, then keep terminology, figures, and recommendations consistent with that choice.
+The report uses that one audience for terminology, figures, and recommendations. The university marker checks the submitted coursework against the requirements. The marker is not a second writing audience. Do not write the report for a university support team or for a student who needs the project reproduced from the README alone.
 
 ## 4. Problem Statement
 
-**Dataset selected on 2026-11-14. The local file has not been loaded. No model has been trained.**
+**Dataset selected on 2026-11-14. The local file was audited on 2026-11-14. Phase 5 models were trained and evaluated on 2026-11-15.**
 
 - **Real-world problem** — estimate, after the second semester, which of three academic outcomes a student record falls into: Dropout, Enrolled, or Graduate. Predictors are limited to enrolment, demographic, socioeconomic, and first- and second-semester academic information available by that point. UCI describes the records as coming from one higher education institution. The report must state that single-institution limit and must discuss fairness where demographic information is used. Those discussions are not written yet, and no fairness audit has been run.
-- **Target variable** — `Target`. The approved classes are Dropout, Enrolled, and Graduate. Phase 2 must confirm the column name and the stored class codes in the downloaded file. The target must not be an input feature.
+- **Target variable** — `Target`. The approved classes are Dropout, Enrolled, and Graduate. Phase 2 confirmed the column name and the stored class labels in `outputs/dataset_audit.md`. The target is not an input feature.
 - **Task type** — multiclass classification. Three outcome categories require a classification task. This is not a regression problem, and there is no single positive class.
 - **Significance** — the coursework question is how well the approved models separate these three outcomes from information available by the end of the second semester. A result that looks strong only because it favours the largest class would be a weak finding. No prediction system is being deployed.
-- **Dataset suitability** — the approved source is public and open-access. UCI reports 4,424 instances, which sits in the recommended 3,000–5,000 band. Those counts are source metadata. They must be measured again when the file is loaded. If the file disagrees with UCI, the measured counts replace the table below and the disagreement is recorded.
+- **Dataset suitability** — the approved source is public and open-access. UCI reports 4,424 instances. The local audit measured the same row count. The measured record is `outputs/dataset_audit.md`.
 
 | Item | Approved record |
 | --- | --- |
@@ -82,56 +71,66 @@ Writing for the marker and writing for a domain stakeholder are different. The r
 | URL | https://archive.ics.uci.edu/dataset/697/predict |
 | DOI | https://doi.org/10.24432/C5MC89 |
 | Licence | Creative Commons Attribution 4.0 International (CC BY 4.0) |
-| Instances | 4,424, as reported by UCI |
-| Features | 36, as reported by UCI, in addition to the target |
-| Missing values | UCI reports none. This is not a local inspection. |
-| Local file | Not downloaded. Not stored in `data/raw/`. |
-| Retrieval date | Not recorded, because the file has not been retrieved. |
+| Instances | 4,424, reported by UCI and measured in `outputs/dataset_audit.md` |
+| Features | 36 input columns plus `Target`, measured in the audit |
+| Missing values | UCI reports none. The local audit also found 0 missing cells. |
+| Local file | `data/raw/predict+students+dropout+and+academic+success.zip` and `data/raw/data.csv` |
+| Retrieval date | 2026-11-14 |
 
-**Approved research question**
+**Approved predictive research question**
+
+RQ1 is the only approved predictive research question. Its wording is unchanged:
 
 How effectively can Logistic Regression and Random Forest classify students into Dropout, Enrolled, and Graduate categories using enrolment, demographic, socioeconomic, and first- and second-semester academic information?
 
-The phase plan asked for two or three research questions. Only this question was approved. Further questions are **TBD**. They must not be invented to fill the quota.
+**Approved descriptive EDA questions**
 
-**Planned models, not trained models**
+These questions are descriptive. They use the existing evidence in `outputs/eda_report.md` and the saved EDA figures. They do not authorise another predictive model or experiment, and they do not establish causation.
 
-Logistic Regression is the planned interpretable baseline. Random Forest is the planned second algorithm, from a different model family. Neither has been trained. Exploratory analysis can still challenge this pair before training. A third algorithm is not selected.
+EDA Question 1: How is the distribution of Dropout, Enrolled, and Graduate outcomes represented in the dataset?
 
-**Planned evaluation, not computed scores**
+EDA Question 2: How do first- and second-semester academic progression measures, particularly grades and approved units, differ descriptively across the three outcome groups?
 
-Macro F1-score, precision, recall, balanced accuracy, accuracy, and a confusion matrix. Accuracy must not be the only reported metric, because class imbalance has to be accounted for. UCI states that the classes are strongly imbalanced. Class counts have not been measured in this project, so none are recorded here. No score threshold is set.
+The report presentation is resolved: predictive RQ1 is presented beside these two descriptive questions, and the two kinds of question stay distinct. The earlier proposed RQ2 and RQ3 remain unapproved. They must not be written as approved predictive questions. The reviewed brief asks for two or three research questions. This presentation does not guarantee that the descriptive questions count toward that requirement. If that reading is unclear, it should be confirmed with the module leader.
+
+**Approved models, already fitted**
+
+Logistic Regression and Random Forest were tuned on the training split only. `DummyClassifier(strategy="most_frequent")` is the fitted untuned baseline. The design is `docs/phase-5-experimental-design.md`. Saved parameters and scores are under `outputs/models/` and `outputs/evaluation/`. A third algorithm is closed: the approved design does not add one. No single preferred model is authorised.
+
+**Recorded evaluation**
+
+The approved metrics are macro F1, balanced accuracy, macro precision, accuracy, a confusion matrix, and per-class precision, recall, and F1. Balanced accuracy is the recall summary. Accuracy is not the only reported metric. The measured class counts are in `outputs/dataset_audit.md`: Graduate 2,209, Dropout 1,421, Enrolled 794. Those counts are file counts, not model scores. No numeric success threshold is set. This section does not copy the scores. The saved values stay in `outputs/evaluation/`.
 
 ## 5. Core Features / Deliverables
 
-The finished project must contain the following. Dataset choice is recorded. Acquisition, local measurement, EDA, and modelling are not done.
+The finished project must contain the following. Dataset choice, local measurement, EDA, preprocessing, and Phase 5 modelling are recorded. The report, reflection, certificates, references, and AI declaration remain outstanding.
 
 | Deliverable | What "done" means |
 | --- | --- |
-| Dataset acquisition | A real open-access file, or a script/instructions that obtain the exact file from a stable source. |
-| Dataset metadata | Name, source URL, retrieval date, row and column counts, and a short description. Counts must be measured, not guessed. |
-| Licence verification | Licence name and a link or quotation of the permission that allows use. If the licence is unclear, the dataset is not selected. |
-| Dataset dictionary | Field name, type, meaning, and notes on missingness or codes. Unknown meanings stay marked unknown. |
-| Research questions | One approved question is recorded in section 4. A second or third question is still open. |
-| Exploratory data analysis | Univariate, bivariate, and multivariate checks, with interpretation. |
-| Cleaning | Documented treatment of missing values, duplicates, types, and outliers. |
-| Preprocessing pipeline | A leakage-safe, repeatable transformation from raw fields to model inputs. |
-| Feature engineering | Only where a transformation is justified by the data or the question. If none is justified, record that decision. |
-| Train/test split | One documented split, shared by every model in the comparison. |
-| Baseline models | A simple, interpretable baseline trained before tuning. |
-| Model comparison | At least two different algorithms, compared on the same data and metrics. |
-| Evaluation metrics | Metrics chosen for the task, reported from code outputs. |
-| Cross-validation | Used to estimate generalisation and/or to tune, on training data only. |
-| Hyperparameter tuning | A documented search after the baseline, without using the test set to pick settings. |
-| Final model comparison | A table of baseline and tuned results, with a justified preferred model. |
-| Plots | Labelled figures exported for the report. |
-| Conclusions | Claims that cite the project's own tables and figures. |
-| Limitations | Sample, leakage, metric, and scope limits written explicitly. |
-| Learning reflection | Student account of learning, challenges, and how challenges were addressed. |
-| Certification evidence | Real AI/ML certificates or badges stored in the repository or linked, with the provider and date. |
-| GitHub reproducibility | Public repository, README run steps, and code that matches the report. |
-| References | BCU Harvard references to real, accessible sources. |
-| AI-use declaration | A transparent account of generative-AI assistance, and what the student verified. |
+| Dataset acquisition | Done. The zip and extracted CSV are in `data/raw/`. |
+| Dataset metadata | Done. Name, URL, retrieval date, and measured counts are in `outputs/dataset_audit.md`. |
+| Licence verification | Done for the quoted 2026-11-14 UCI sentence. The report bibliography still needs BCU Harvard checking. |
+| Dataset dictionary | Done in the audit. Unknown meanings stay marked unknown. |
+| Research questions | RQ1 is the approved predictive question. Two descriptive EDA questions are approved. The earlier proposed RQ2 and RQ3 remain unapproved. |
+| Exploratory data analysis | Done. `notebooks/01_exploratory_data_analysis.ipynb`, `outputs/eda_report.md`, and `figures/eda/`. |
+| Cleaning | Done as decisions in `docs/phase-4-preprocessing-plan.md`. No rows were removed. |
+| Preprocessing pipeline | Done. `src/preprocessing.py` fits transformers on training data only. |
+| Feature engineering | Done as a recorded decision: no derived features. Further experiments need a separate approval. |
+| Train/test split | Done. 80/20 stratified split, `random_state=42`, created in memory. |
+| Baseline models | Done under the frozen design. The fitted untuned baseline is the most-frequent dummy, not a separate untuned Logistic Regression. |
+| Model comparison | Done as three saved test evaluations. No single preferred model is part of this requirement. |
+| Evaluation metrics | Done. Saved under `outputs/evaluation/`. |
+| Cross-validation | Done on the training portion during Phase 5 grid search. |
+| Hyperparameter tuning | Done for Logistic Regression and Random Forest, without using the test set to pick settings. |
+| Final model comparison | The saved comparison exists. The older demand for one justified preferred model conflicts with the frozen design and is not an active requirement. |
+| Plots | EDA figures exist. Report selection and captions are outstanding. |
+| Conclusions | Outstanding. They belong to the report and must cite saved outputs. |
+| Limitations | The design records them. The report discussion is outstanding. |
+| Learning reflection | Outstanding. Student-owned. |
+| Certification evidence | Outstanding. None are stored. |
+| GitHub reproducibility | The repository and README commands exist. A clean third-party reproduction has not been re-verified by the 2026-11-15 documentation sync. |
+| References | Outstanding. `references/` does not yet hold the bibliography. |
+| AI-use declaration | The project log is in `docs/Memory.md`. The report declaration is outstanding. |
 
 ## 6. Functional Requirements
 
@@ -146,21 +145,21 @@ The finished project must contain the following. Dataset choice is recorded. Acq
 - **FR-09** Exploratory analysis must be completed and interpreted before the final algorithm list is locked.
 - **FR-10** Each cleaning and preprocessing choice that changes rows, columns, or values must be documented, including what was tried and what was kept.
 - **FR-11** Cross-validation, where used, must run inside the training portion of the data.
-- **FR-12** Hyperparameter tuning must start only after a baseline evaluation, and test-set scores must not be the criterion for choosing hyperparameters.
+- **FR-12** Test-set scores must not be the criterion for choosing hyperparameters. The frozen Phase 5 design tuned Logistic Regression and Random Forest on training folds and fitted the dummy separately. It did not save an untuned Logistic Regression or Random Forest before tuning. That older sequence is not outstanding work.
 - **FR-13** Report figures and comparison tables must be produced by code and saved under `figures/` or `outputs/`.
 - **FR-14** The README must state the Python version, install steps, data placement, and the order in which to run the work.
 - **FR-15** Citations in the report must use BCU Harvard and must refer to sources the student can actually open.
 - **FR-16** Generative AI use must be declared. AI-assisted code, text, and analysis must be run or read and checked by the student before it is treated as project evidence.
 - **FR-17** The reflection must describe this project's actual work. It must not be a generic essay detached from the repository.
 - **FR-18** Certification evidence must be genuine. Missing certificates stay listed as incomplete; they are never invented.
-- **FR-19** The train/test split must be stratified on `Target`. The test fraction and `random_state` are still to be chosen in experimental design.
+- **FR-19** The train/test split is stratified on `Target`, 80/20, with `random_state=42`. The student approved that split in Phase 4. It is recorded in `docs/phase-4-preprocessing-plan.md`.
 - **FR-20** Preprocessing must be fit on training data only, preferably with a scikit-learn `Pipeline` and `ColumnTransformer`.
 - **FR-21** Cross-validation must use training data only.
 - **FR-22** `Target` must not be used as an input feature.
 - **FR-23** Categorical variables stored as integer codes must be identified. Integer codes must not automatically be treated as continuous numbers.
 - **FR-24** Class imbalance must be accounted for in the split and in the metrics. Accuracy alone is not an acceptable summary.
 - **FR-25** The report must document the single-institution limitation and fairness considerations. Neither write-up exists yet.
-- **FR-26** Features used for prediction must be information available by the end of the second semester. A column-level check of that rule is Phase 2 work, not a result claimed here.
+- **FR-26** Features used for prediction must be information available by the end of the second semester. The column check is recorded in `outputs/dataset_audit.md` and `docs/phase-4-preprocessing-plan.md`. Six columns stay excluded. Four binary columns stay provisionally retained under an unverified timing assumption.
 
 ## 7. Non-Functional Requirements
 
@@ -176,7 +175,7 @@ The finished project must contain the following. Dataset choice is recorded. Acq
 
 ## 8. Success Criteria
 
-Success is requirement completion and evidential honesty. This document sets **no numeric score threshold**. The dataset is selected, and no baseline has been trained. Inventing a target macro F1, accuracy, or other score would be premature.
+Success is requirement completion and evidential honesty. This document sets **no numeric score threshold**. The dataset is selected, and the approved Phase 5 models have been evaluated. Inventing a target macro F1, accuracy, or other score remains out of scope.
 
 The project is successful when all of the following are true:
 
@@ -203,6 +202,7 @@ The following are out of scope for this coursework project:
 - Deep learning, unless the selected problem cannot be addressed adequately by the agreed classical stack and the student records why. That need is not assumed.
 - Scraping or collecting data without permission, or using a dataset whose licence does not allow this use.
 - Fabricated results, placeholder metrics, synthetic stand-ins presented as the real dataset, or citations that were not opened.
+- A third classifier, a single preferred model, feature-importance analysis, or coefficient analysis, unless the student later gives a separate approval. The default is that none of these are added.
 
 ## 10. Open Decisions
 
@@ -210,14 +210,17 @@ Closed decisions are marked selected. Remaining items stay **TBD**.
 
 | Decision | Status | Gate |
 | --- | --- | --- |
-| Dataset | Selected: Predict Students' Dropout and Academic Success, UCI 697, CC BY 4.0. | Local file still to be downloaded and measured in Phase 2. |
+| Dataset | Selected: Predict Students' Dropout and Academic Success, UCI 697, CC BY 4.0. | Downloaded and measured on 2026-11-14. See `outputs/dataset_audit.md`. |
 | Classification or regression | Selected: multiclass classification. | Three approved classes. |
-| Target variable | Selected: `Target` (Dropout, Enrolled, Graduate). | Confirm the stored codes when the file is loaded. |
-| Research questions | One question approved. Further questions are TBD. | The phase plan asked for two or three. Do not invent the rest. |
-| Algorithms | Planned: Logistic Regression, then Random Forest. Not trained. | EDA must still review this pair before training. A third model is TBD. |
-| Metrics | Planned: macro F1, precision, recall, balanced accuracy, accuracy, and a confusion matrix. | No scores exist. The final model-selection rule is TBD. |
-| Final target audience for the report | TBD. | One explicit audience, named in the report. |
+| Target variable | Selected: `Target` (Dropout, Enrolled, Graduate). | Confirmed in the audit. |
+| Research questions | Presentation resolved: predictive RQ1 beside two descriptive EDA questions. | The earlier proposed RQ2 and RQ3 remain unapproved. This presentation does not guarantee that the descriptive questions satisfy the brief's count. |
+| Algorithms | Fitted: Logistic Regression, Random Forest, and a most-frequent dummy. | A third model is closed by the Phase 5 design. |
+| Metrics | Saved in `outputs/evaluation/`. | No numeric threshold. A single overall winner is closed by the Phase 5 design. |
+| Final target audience for the report | Selected: academic and technical readers familiar with introductory machine learning. | Approved on 2026-11-17. The report text is not written. |
 | Certifications to complete | TBD — to be decided when the student selects approved AI/ML certification options. | Evidence must be real. |
-| Project / report title | TBD. | Must match the actual problem. |
-| Train/test ratio and `random_state` | TBD. | Decide in Phase 5. The split must be stratified. UCI's 80/20 example is not adopted. |
+| Project / report title | Selected: Predicting Student Academic Outcomes Using Logistic Regression and Random Forest. | Approved on 2026-11-17. The report text is not written. |
+| Seen-data reporting | Selected: five-fold training-only cross-validation is validation evidence. The 885-row holdout is unseen test evidence. | Cross-validation results are not training-set performance. Separate final-model training-set metrics were not produced and must not be calculated from this decision. |
+| Model comparison figure | Created and verified: `figures/model_comparison/figure_01_model_comparison_f1.png`, from `src/plot_model_comparison.py`. | Panel A is selected Logistic Regression and Random Forest five-fold training-only CV macro F1. No dummy CV score was saved. Panel B is holdout macro F1 for the dummy, Logistic Regression, and Random Forest. Panel C is holdout F1 for Dropout, Enrolled, and Graduate. Saved evaluation files only. Do not name a winner. |
+| Submission package | Selected for preparation: a separate Word report, a technical project ZIP, and the public GitHub link in the report. | The final Moodle instructions have not been verified. Neither the Word report nor the ZIP exists. |
+| Train/test ratio and `random_state` | Approved: 80/20 stratified split, `random_state=42`. | Approved in Phase 4. UCI's example is not itself the approval. |
 | Seven alternative datasets | Retained as alternatives only. Names TBD in these files. | They are not active project datasets. Do not invent their names. |
