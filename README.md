@@ -5,13 +5,13 @@ Repository: [CMP6202-AI-ML-Project](https://github.com/juraidyousaf/CMP6202-AI-M
 
 Coursework project for CMP6202 Artificial Intelligence and Machine Learning. This repository is a reproducible classical machine-learning study. It is not a deployed application.
 
-Phases 0–5 are complete and approved. Phase 5 results are frozen. The saved models are under `outputs/models/`. The saved metrics, including the confusion matrices, are under `outputs/evaluation/`. The Phase 6 interpretation and evidence map in `docs/phase-6-results-interpretation.md` were reviewed on 2026-11-16. A local report draft is in `docs/phase-6-report-draft.md`. Phase 6 is not complete, the graded Word report and technical ZIP have not been created, and this copy has not been published as the final submission. This README does not claim that a clean third-party reproduction was checked.
+Phases 0–5 are complete and approved. Phase 5 results are frozen. The saved models are under `outputs/models/`. The saved metrics, including the confusion matrices, are under `outputs/evaluation/`. **Phase 6 — Results Interpretation and Coursework Report Preparation — remains in progress.** Its working interpretation and report drafts are maintained separately from this technical archive. The completed Word report is a separate submission deliverable. Phase 6 is not complete. The separate technical archive has been prepared. This copy has not been published as the final submission. This README does not claim that a clean third-party reproduction was checked.
 
 ## Project overview
 
 The project studies one public dataset with a supervised classification workflow: audit, exploratory analysis, leakage-safe preprocessing, and the approved Phase 5 comparison.
 
-The approved report title is Predicting Student Academic Outcomes Using Logistic Regression and Random Forest. The approved audience is academic and technical readers familiar with introductory machine learning. The local draft is not the submitted report. Seven other datasets were shortlisted as alternatives. Their names are not stored here, and they are not part of this project.
+The approved report title is Predicting Student Academic Outcomes Using Logistic Regression and Random Forest. The approved audience is academic and technical readers familiar with introductory machine learning. The completed Word report is a separate submission deliverable and has not been published as the final submission. Seven other datasets were shortlisted as alternatives. Their names are not stored here, and they are not part of this project.
 
 ## Research problem
 
@@ -19,9 +19,9 @@ How effectively can Logistic Regression and Random Forest classify students into
 
 The prediction point is after the second semester. The approved feature set is the 30 columns retained by `src/preprocessing.py`. The target column is not an input.
 
-UCI describes the records as coming from one higher education institution. The local draft records that limit. No fairness audit has been run.
+UCI describes the records as coming from one higher education institution. The separate Word report records that limit. No fairness audit has been run.
 
-RQ1 is the only approved predictive research question. Two descriptive EDA questions are approved and use the existing EDA evidence. Predictive modelling and descriptive EDA stay distinct. The earlier proposed RQ2 and RQ3 remain unapproved. The CMP6202 Assessment Brief 2026–27 and Individual Report Template 2026–27 were reviewed on 2026-11-16 and inspected on 2026-11-17. They are stored at the repository root as `CMP6202 Assessment Brief  2026-27.docx` and `CMP6202 Individual Report Template 2026-27.docx`. The brief sets a maximum of 3,000 words with a +10% tolerance only, up to 3,300 words. There is no lower tolerance. Headings, tables, citations, quotes, and lists in the main body count. Material before the body, and references, bibliographies, and appendices, do not. The graded Word report has not been created.
+RQ1 is the only approved predictive research question. Two descriptive EDA questions are approved and use the existing EDA evidence. Predictive modelling and descriptive EDA stay distinct. The earlier proposed RQ2 and RQ3 remain unapproved. The assessment brief and report template informed the coursework requirements but are not included in this technical archive. They were reviewed on 2026-11-16 and inspected on 2026-11-17. The brief sets a maximum of 3,000 words with a +10% tolerance only, up to 3,300 words. There is no lower tolerance. Headings, tables, citations, quotes, and lists in the main body count. Material before the body, and references, bibliographies, and appendices, do not. The completed Word report is a separate submission deliverable and has not been published as the final submission.
 
 Five-fold training-only cross-validation is validation evidence. The 885-row holdout is the unseen test evidence. Cross-validation results are not training-set performance. Separate final-model training-set metrics were not produced. The verified comparison figure is `figures/model_comparison/figure_01_model_comparison_f1.png`, written by `src/plot_model_comparison.py` from the saved evaluation files. Panel A is five-fold training-only cross-validation macro F1 for the selected Logistic Regression and Random Forest. No dummy cross-validation score was saved, so none is shown. Panel B is holdout macro F1 for the dummy, Logistic Regression, and Random Forest. Panel C is holdout F1 for Dropout, Enrolled, and Graduate. The planned submission package is a separate Word report, a technical project ZIP, and the public GitHub link in the report. The final Moodle instructions have not been verified.
 
@@ -92,15 +92,10 @@ Inspect these saved files without fitting the models again:
 
 ```text
 CMP6202-AI-ML-Project/
-├── CMP6202 Assessment Brief  2026-27.docx
-├── CMP6202 Individual Report Template 2026-27.docx
 ├── README.md
 ├── requirements.txt
-├── .gitignore
 ├── data/
-│   ├── raw/          # original UCI zip and extracted data.csv; not ignored by Git
-│   ├── interim/
-│   └── processed/    # no model matrix is written here
+│   └── raw/          # original UCI zip and extracted data.csv
 ├── notebooks/
 │   └── 01_exploratory_data_analysis.ipynb
 ├── src/
@@ -120,17 +115,18 @@ CMP6202-AI-ML-Project/
 │   ├── eda_report.md
 │   ├── models/
 │   └── evaluation/
-├── docs/
-└── references/
+└── docs/
+    ├── phase-4-preprocessing-plan.md
+    └── phase-5-experimental-design.md
 ```
 
-`docs/` holds the planning documents. They are not the graded report. `src/preprocessing.py`, `src/model_training.py`, and `src/model_evaluation.py` are imported by the runner and the tests. They are not separate command-line programs.
+`docs/phase-4-preprocessing-plan.md` and `docs/phase-5-experimental-design.md` record the frozen preprocessing workflow and experimental design. They are not the graded report. `src/preprocessing.py`, `src/model_training.py`, and `src/model_evaluation.py` are imported by the runner and the tests. They are not separate command-line programs.
 
 ## Commands
 
 To inspect the approved results, open the files listed above. Do not run `src/run_phase5.py` for that inspection.
 
-`src/run_phase5.py` checks the raw-file hash, fits the approved grids, evaluates the 885-row holdout, and writes `outputs/models/` and `outputs/evaluation/`. The approved outputs from the 2026-11-15 run already exist. Running the script again overwrites those saved models and evaluation outputs. The script does not itself mark Phase 5 complete. The approval is recorded in `docs/Phases.md` and `docs/Memory.md`.
+`src/run_phase5.py` checks the raw-file hash, fits the approved grids, evaluates the 885-row holdout, and writes `outputs/models/` and `outputs/evaluation/`. The approved outputs from the 2026-11-15 run already exist. Running the script again overwrites those saved models and evaluation outputs. The script does not itself mark Phase 5 complete. The frozen preprocessing workflow is recorded in `docs/phase-4-preprocessing-plan.md`, and the frozen experimental design is recorded in `docs/phase-5-experimental-design.md`.
 
 ```powershell
 python src/run_phase5.py
@@ -181,7 +177,7 @@ On macOS or Linux, activate the environment with `source .venv/bin/activate` ins
 
 ## Attribution and licence
 
-The dataset citation used in the local report draft is:
+The dataset citation used in the Word report is:
 
 Realinho, V., Vieira Martins, M., Machado, J. and Baptista, L. (2021) Predict Students' Dropout and Academic Success. [dataset] UCI Machine Learning Repository. Available at: https://doi.org/10.24432/C5MC89 [Accessed 14 November 2026].
 
@@ -189,6 +185,6 @@ Realinho, V., Vieira Martins, M., Machado, J. and Baptista, L. (2021) Predict St
 
 The page states: "This dataset is licensed under a Creative Commons Attribution 4.0 International (CC BY 4.0) license." It links to https://creativecommons.org/licenses/by/4.0/legalcode.
 
-The raw files remain available to Git. `data/raw/` is not listed in `.gitignore`.
+The raw dataset files are included in this archive under `data/raw/`.
 
 The official zip and UCI's direct `data.csv` URL are both on `archive.ics.uci.edu`, and they are not byte-identical. This project keeps the zip and the `data.csv` extracted from it. Details are in `outputs/dataset_audit.md`.
